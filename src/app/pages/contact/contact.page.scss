@@ -1,0 +1,17 @@
+@import '../../../styles';
+
+.mat-card {
+  width: 400px;
+  margin: auto;
+  form {
+    padding: 8px;
+    mat-input-container,
+    mat-select {
+      width: 100%;
+    }
+    mat-checkbox {
+      padding-top: 16px;
+      display: block;
+    }
+  }
+}
