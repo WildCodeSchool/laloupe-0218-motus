@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'contact',
@@ -9,7 +10,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class ContactPage {
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: MatSnackBar, public auth: AuthService) {
   }
   onSubmit() {
     this.snackBar.open("Order Submitted", "retry", {

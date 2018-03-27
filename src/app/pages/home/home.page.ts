@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'home',
@@ -8,7 +8,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class HomePage {
-  constructor() {
+  constructor(public auth: AuthService) {
   }
 
   ngOnInit() {

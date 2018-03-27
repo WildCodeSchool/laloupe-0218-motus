@@ -8,6 +8,8 @@ import { RulesPage } from './pages/rules';
 import { LoginPage } from './pages/login';
 import { MotusPage } from './pages/motus';
 import { TestComponent } from './components/test/test.component';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 export const router: Routes = [
     { path: '', redirectTo: 'app', pathMatch: 'full' },

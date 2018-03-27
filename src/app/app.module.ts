@@ -20,7 +20,9 @@ import { MotusPage } from './pages/motus';
 // Services
 
 // importation du composant routes
-import { routes } from './app.routes'
+import { routes } from './app.routes';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
 
 // importations des modules pour angular material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // https://angular.io/api/platform-browser/animations/BrowserAnimationsModule
@@ -94,7 +96,7 @@ import { TestComponent } from './components/test/test.component'; // necessaire 
     routes
   
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [RulesDialogComponent]
 })

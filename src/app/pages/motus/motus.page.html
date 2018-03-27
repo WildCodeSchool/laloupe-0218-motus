@@ -1,3 +1,70 @@
 <!-- contact.page.html -->
 
 <!-- motus.page.html -->
+<p>motus works</p>
+<div class="example-container mat-elevation-z8">
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="saisir votre mot" name="mot" [(ngModel)]="mot" #ctrl="ngModel" class="form-control" required
+                minlength="8" required maxlength="8" appForbiddenName="bob">
+        </mat-form-field>
+        <button mat-button (click)="submit()">Click me!</button>
+    </form>
+
+    <mat-table #table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="1">
+            <mat-header-cell *matHeaderCellDef> 1 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{arraymot[0]}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="2">
+            <mat-header-cell *matHeaderCellDef> 2 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{arraymot[1]}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="3">
+            <mat-header-cell *matHeaderCellDef> 3 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{arraymot[2]}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="4">
+            <mat-header-cell *matHeaderCellDef> 4 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{arraymot[3]}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="5">
+            <mat-header-cell *matHeaderCellDef> 5 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{arraymot[4]}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="6">
+            <mat-header-cell *matHeaderCellDef> 6 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{arraymot[5]}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="7">
+            <mat-header-cell *matHeaderCellDef> 7 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{arraymot[6]}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="8">
+            <mat-header-cell *matHeaderCellDef> 8 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{arraymot[7]}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!-- <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator> -->
+</div>
