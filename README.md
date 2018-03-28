@@ -1,4 +1,4 @@
-# AngularWcsProjet2
+# laloupe-0218-motus
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
 
@@ -236,4 +236,3 @@ Code released under the [MIT license](LICENSE).
 
 [npm-url]: https://www.npmjs.com/package/angular-cli-ghpages
 [npm-image]: https://badge.fury.io/js/angular-cli-ghpages.svg
-
