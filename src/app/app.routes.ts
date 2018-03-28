@@ -10,7 +10,7 @@ import { MotusPage } from './pages/motus';
 import { TestComponent } from './components/test/test.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
-import { LogintestPage } from './pages/logintest';
+import { MotustestPage } from './pages/motustest';
 
 export const router: Routes = [
     { path: '', redirectTo: 'app', pathMatch: 'full' },
@@ -18,7 +18,8 @@ export const router: Routes = [
     { path: 'contact', component: ContactPage },
     { path: 'rules', component: RulesPage },
     { path: 'login', component: LoginPage },
-    { path: 'motus', component: MotusPage }
+    { path: 'motus', component: MotusPage },
+    { path: 'motustest', component: MotustestPage }
     
 
 ];

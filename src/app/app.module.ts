@@ -18,6 +18,7 @@ import { ContactPage } from './pages/contact';
 import { RulesPage } from './pages/rules';
 import { LoginPage } from './pages/login';
 import { MotusPage } from './pages/motus';
+import { MotustestPage } from './pages/motustest';
 // Services
 
 // importation du composant routes
@@ -64,6 +65,7 @@ import { TestComponent } from './components/test/test.component'; // necessaire 
     LoginPage,
     MotusPage,
     TestComponent,
+    MotustestPage
     
     
   ],
