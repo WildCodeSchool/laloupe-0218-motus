@@ -7,6 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog'; // https://material.
 import { RouterModule } from '@angular/router'; //https://angular.io/api/router/RouterModule
 import 'hammerjs'; // nessaire au bon fonctionnent de material
 
+
 import { AppComponent } from './app.component';
 //importation de composant
 import { RulesDialogComponent } from './components/rules/rules-dialog/rules-dialog.component';
