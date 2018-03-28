@@ -17,6 +17,7 @@ import { HomePage } from './pages/home';
 import { ContactPage } from './pages/contact';
 import { RulesPage } from './pages/rules';
 import { LoginPage } from './pages/login';
+import { LogintestPage } from './pages/logintest';
 import { MotusPage } from './pages/motus';
 // Services
 
@@ -62,8 +63,9 @@ import { TestComponent } from './components/test/test.component'; // necessaire 
     RulesPage,
     RulesDialogComponent,
     LoginPage,
+    LogintestPage,
     MotusPage,
-    TestComponent,
+    TestComponent
     
     
   ],

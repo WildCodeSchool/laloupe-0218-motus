@@ -18,7 +18,8 @@ export const router: Routes = [
     { path: 'contact', component: ContactPage },
     { path: 'rules', component: RulesPage },
     { path: 'login', component: LoginPage },
-    { path: 'motus', component: MotusPage }
+    { path: 'motus', component: MotusPage },
+    { path: 'logintest', component: LogintestPage }
     
 
 ];

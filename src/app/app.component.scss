@@ -2,11 +2,11 @@
 
 
 .mat-sidenav-container {
-  // .mat-sidenav {
-  //   width: 200px;
-  //   background: mat-color($mat-grey, 400);
-  // }
-  @include angular-material-theme($dark-theme);
+  .mat-sidenav {
+    width: 200px;
+    background: mat-color($mat-grey, 400);
+  }
+  //@include angular-material-theme($dark-theme);
 
   .mat-toolbar {
     padding: 0px;
