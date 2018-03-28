@@ -17,7 +17,6 @@ import { HomePage } from './pages/home';
 import { ContactPage } from './pages/contact';
 import { RulesPage } from './pages/rules';
 import { LoginPage } from './pages/login';
-import { LogintestPage } from './pages/logintest';
 import { MotusPage } from './pages/motus';
 import { MotustestPage } from './pages/motustest';
 // Services
@@ -64,14 +63,9 @@ import { TestComponent } from './components/test/test.component'; // necessaire 
     RulesPage,
     RulesDialogComponent,
     LoginPage,
-    LogintestPage,
     MotusPage,
-<<<<<<< HEAD
     TestComponent,
     MotustestPage
-=======
-    TestComponent
->>>>>>> 13fe47beca0ff369fe72b149b7bc32d0054e739b
     
     
   ],
