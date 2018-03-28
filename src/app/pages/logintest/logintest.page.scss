@@ -1,0 +1,14 @@
+@import '../../../styles';
+body {
+  background-color: #EEEEEE;
+}
+
+.login .logo {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+}
+mat-card {
+    padding: 0 !important;
+    width: 400px;
+}
