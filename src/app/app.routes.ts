@@ -10,6 +10,7 @@ import { MotusPage } from './pages/motus';
 import { TestComponent } from './components/test/test.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { LogintestPage } from './pages/logintest';
 
 export const router: Routes = [
     { path: '', redirectTo: 'app', pathMatch: 'full' },
