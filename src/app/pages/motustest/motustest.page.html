@@ -3,21 +3,21 @@
 <div class="example-container mat-elevation-z8">
     <form class="example-form">
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="saisir votre mot" name="mot" [(ngModel)]="mot" #ctrl="ngModel" class="form-control" required
+            <input matInput placeholder="saisir votre mot" name="mot" [(ngModel)]="mot"  class="form-control" required
                 minlength="8" required maxlength="8" appForbiddenName="bob">
         </mat-form-field>
         <button mat-button (click)="submit()">Click me!</button>
     </form>
 
     <mat-grid-list cols="8" rowHeight="2:1" id="row1">
-        <mat-grid-tile id="row1-1"></mat-grid-tile>
-        <mat-grid-tile id="row1-2">2</mat-grid-tile>
-        <mat-grid-tile id="row1-3">3</mat-grid-tile>
-        <mat-grid-tile id="row1-4">4</mat-grid-tile>
-        <mat-grid-tile id="row1-5">5</mat-grid-tile>
-        <mat-grid-tile id="row1-6">6</mat-grid-tile>
-        <mat-grid-tile id="row1-7">7</mat-grid-tile>
-        <mat-grid-tile id="row1-8">8</mat-grid-tile>
+        <mat-grid-tile id="row1-1">{{arraymotRef[0]}}</mat-grid-tile>
+        <mat-grid-tile id="row1-2"></mat-grid-tile>
+        <mat-grid-tile id="row1-3"></mat-grid-tile>
+        <mat-grid-tile id="row1-4">{{arraymot[3]}}</mat-grid-tile>
+        <mat-grid-tile id="row1-5">{{arraymot[4]}}</mat-grid-tile>
+        <mat-grid-tile id="row1-6">{{arraymot[5]}}</mat-grid-tile>
+        <mat-grid-tile id="row1-7">{{arraymot[6]}}</mat-grid-tile>
+        <mat-grid-tile id="row1-8">{{arraymot[7]}}</mat-grid-tile>
       </mat-grid-list>
       <mat-grid-list cols="8" rowHeight="2:1" id="row2">
         <mat-grid-tile>1</mat-grid-tile>
