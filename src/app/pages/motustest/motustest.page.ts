@@ -4,11 +4,8 @@ import { MatInputModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import * as firebase from 'firebase/app';
 
-<<<<<<< HEAD:src/app/pages/motustest/motustest.page.ts
  
 
-=======
->>>>>>> 13fe47beca0ff369fe72b149b7bc32d0054e739b:src/app/pages/logintest/logintest.page.ts
 @Component({
   selector: 'motustest',
   templateUrl: './motustest.page.html',

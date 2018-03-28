@@ -18,6 +18,7 @@ import { ContactPage } from './pages/contact';
 import { RulesPage } from './pages/rules';
 import { LoginPage } from './pages/login';
 import { LogintestPage } from './pages/logintest';
+import { HometestPage } from './pages/hometest';
 import { MotusPage } from './pages/motus';
 import { MotustestPage } from './pages/motustest';
 // Services
@@ -56,22 +57,21 @@ import { environment } from '../environments/environment'; // variable environne
 import { Observable } from 'rxjs/Observable';
 import { TestComponent } from './components/test/test.component'; // necessaire pour les promise et observable 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HomePage,
+    HometestPage,
     ContactPage,
     RulesPage,
     RulesDialogComponent,
     LoginPage,
     LogintestPage,
     MotusPage,
-<<<<<<< HEAD
     TestComponent,
-    MotustestPage
-=======
-    TestComponent
->>>>>>> 13fe47beca0ff369fe72b149b7bc32d0054e739b
+    MotustestPage,
+    
     
     
   ],
@@ -103,6 +103,7 @@ import { TestComponent } from './components/test/test.component'; // necessaire 
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     routes
+
   
   ],
   providers: [AuthService, AuthGuard],

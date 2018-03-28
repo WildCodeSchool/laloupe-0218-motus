@@ -3,25 +3,29 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomePage } from './pages/home';
+import { HometestPage } from './pages/hometest';
 import { ContactPage } from './pages/contact';
 import { RulesPage } from './pages/rules';
 import { LoginPage } from './pages/login';
+import { LogintestPage } from './pages/logintest';
 import { MotusPage } from './pages/motus';
 import { TestComponent } from './components/test/test.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { MotustestPage } from './pages/motustest';
-import { LogintestPage } from './pages/logintest';
+
 
 export const router: Routes = [
     { path: '', redirectTo: 'app', pathMatch: 'full' },
     { path: 'home', component: HomePage },
+    { path: 'hometest', component: HometestPage },
     { path: 'contact', component: ContactPage },
     { path: 'rules', component: RulesPage },
     { path: 'login', component: LoginPage },
+    { path: 'logintest', component: LogintestPage },
     { path: 'motus', component: MotusPage },
     { path: 'motustest', component: MotustestPage },
-    { path: 'logintest', component: LogintestPage }
+    
     
 
 ];
