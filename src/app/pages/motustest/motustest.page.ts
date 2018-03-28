@@ -16,18 +16,33 @@ export class MotustestPage implements OnInit {
   mot: string; // variable de saisie par l utilisateur issue du input
   nbClick: number = 0 // compteur initialiser a zero permettant de savoir le nombre de coup joué
   motRef: string = "azertyui"; // variable de test permettant de faire les essais
-  lettre1: string; // non utilisé
-  lettre2: string; // non utilisé
-  lettre3: string; // non utilisé
-  lettre4: string; // non utilisé
-  lettre5: string; // non utilisé
-  lettre6: string; // non utilisé
-  lettre7: string; // non utilisé
-  lettre8: string; // non utilisé
+  arrayMot0: string[] = [];
+  arrayMot1: string[] = []; 
+  arrayMot2: string[] = []; 
+  arrayMot3: string[] = []; 
+  arrayMot4: string[] = []; 
+  arrayMot5: string[] = []; 
+  arrayMot6: string[] = []; 
+  arrayMot7: string[] = []; 
+ // stockage de chaque saisie
+  arrayMotGlobal=[
+    this.arrayMot0,
+    this.arrayMot1,
+    this.arrayMot2,
+    this.arrayMot3,
+    this.arrayMot4,
+    this.arrayMot5,
+    this.arrayMot6,
+    this.arrayMot7
+    
+  ];
+  
   arraymot: string[] = []; // variable tableau du mot saisi tronqué lettre par lettre par transform
   arraymotRef: string[] = []; // variable tableau du mot recherché  tronqué lettre par lettre par transform
-  arraylettreOK: string[] = []; // variable tableau des lettres a la bonne place
-  arraylettreNOK: string[] = []; // variable tableau des lettres pas a la bonne place mais present dans le mot
+  arrayLettreOk: string[] = []; // variable tableau des lettres a la bonne place
+  arrayLettreNoOk: string[] = []; // variable tableau des lettres pas a la bonne place mais present dans le mot
+  arrayStoreOk: string[] = []; // stocke l information des bonne lettre pour repercution sur ligne suivante
+  arrayStoreNoOk: string[] = []; // stocke les lettre pas a la bonne place pour colorise
   constructor(public afAuth: AngularFireAuth, ) {
   }
   login() {
@@ -39,12 +54,24 @@ export class MotustestPage implements OnInit {
   ngOnInit() {
 
     this.transform(this.motRef, this.arraymotRef)
+    this.arrayLettreOk[0]=this.arraymotRef[0];
+    this.arrayMot0 = [this.arraymotRef[0],"","","","","","",""];
   }
   submit() {
-    this.nbClick += 1
+    var i = this.nbClick
     //console.log("ca clique " + this.mot);
     this.transform(this.mot, this.arraymot);
     this.compareWord(this.arraymot);
+    for(let j=0; j<this.arraymot.length;j++){
+      console.log(this.arrayMotGlobal[i][j]);
+      
+      this.arrayMotGlobal[i][j] = this.arraymot[j];
+    }
+    
+    console.log(this.arraymot,this.arrayMot0)
+    this.mot="";
+    this.arraymot=[];
+    this.nbClick += 1
   }
   transform(pmot: string, parray: string[]) {
     //console.log(pmot.length);
@@ -59,66 +86,85 @@ export class MotustestPage implements OnInit {
       switch (parray[i]) {
         case this.arraymotRef[1]:
           if (i == 1) {
-            this.arraylettreOK.push(parray[i])
+            this.arrayLettreOk.push(parray[i])
+            this.arrayLettreNoOk.push("")
           } else {
-            this.arraylettreNOK.push(parray[i])
+            this.arrayLettreNoOk.push(parray[i])
+            this.arrayLettreOk.push("")
+
           }
           break;
         case this.arraymotRef[2]:
           //console.log('ok2')
           if (i == 2) {
-            this.arraylettreOK.push(parray[i])
+            this.arrayLettreOk.push(parray[i])
+            this.arrayLettreNoOk.push("")
           } else {
-            this.arraylettreNOK.push(parray[i])
+            this.arrayLettreNoOk.push(parray[i])
+            this.arrayLettreOk.push("")
           }
           break;
         case this.arraymotRef[3]:
           //console.log('ok3')
           if (i == 3) {
-            this.arraylettreOK.push(parray[i])
+            this.arrayLettreOk.push(parray[i])
+            this.arrayLettreNoOk.push("")
           } else {
-            this.arraylettreNOK.push(parray[i])
+            this.arrayLettreNoOk.push(parray[i])
+            this.arrayLettreOk.push("")
           }
           break;
         case this.arraymotRef[4]:
           //console.log('ok4')
           if (i == 4) {
-            this.arraylettreOK.push(parray[i])
+            this.arrayLettreOk.push(parray[i])
+            this.arrayLettreNoOk.push("")
           } else {
-            this.arraylettreNOK.push(parray[i])
+            this.arrayLettreNoOk.push(parray[i])
+            this.arrayLettreOk.push("")
           }
           break;
         case this.arraymotRef[5]:
           //console.log('ok5')
           if (i == 5) {
-            this.arraylettreOK.push(parray[i])
+            this.arrayLettreOk.push(parray[i])
+            this.arrayLettreNoOk.push("")
           } else {
-            this.arraylettreNOK.push(parray[i])
+            this.arrayLettreNoOk.push(parray[i])
+            this.arrayLettreOk.push("")
           }
           break;
         case this.arraymotRef[6]:
           //console.log('ok6')
           if (i == 6) {
-            this.arraylettreOK.push(parray[i])
+            this.arrayLettreOk.push(parray[i])
+            this.arrayLettreNoOk.push("")
           } else {
-            this.arraylettreNOK.push(parray[i])
+            this.arrayLettreNoOk.push(parray[i])
+            this.arrayLettreOk.push("")
           }
           break;
         case this.arraymotRef[7]:
           //console.log('ok7')
           if (i == 7) {
-            this.arraylettreOK.push(parray[i])
+            this.arrayLettreOk.push(parray[i])
+            this.arrayLettreNoOk.push("")
           } else {
-            this.arraylettreNOK.push(parray[i])
+            this.arrayLettreNoOk.push(parray[i])
+            this.arrayLettreOk.push("")
           }
           break;
         default:
-          this.arraylettreOK.push("")
-          this.arraylettreNOK.push("")
+          this.arrayLettreOk.push("")
+          this.arrayLettreNoOk.push("")
           break;
       } // fin du switch
     } // fin du for
-    console.log("NONOK " + this.arraylettreNOK, "OK " + this.arraylettreOK);
+    this.arrayStoreOk = this.arrayLettreOk;
+    this.arrayStoreNoOk = this.arrayLettreNoOk;
+    this.arrayLettreOk = [];
+    this.arrayLettreNoOk = [];
+    console.log("NONOK " + this.arrayStoreNoOk, "OK " + this.arrayStoreOk);
   } // fin de fonction compare
 }
 
