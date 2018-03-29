@@ -8,10 +8,10 @@ import * as firebase from 'firebase/app';
   selector: 'logintest',
   templateUrl: './logintest.page.html',
   styleUrls: ['./logintest.page.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class LogintestPage implements OnInit {
-  constructor(public afAuth: AngularFireAuth, ) {
+  constructor(public afAuth: AngularFireAuth) {
   }
   login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());

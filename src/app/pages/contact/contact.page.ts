@@ -12,6 +12,9 @@ export class ContactPage implements OnInit {
 
   constructor(private snackBar: MatSnackBar, public auth: AuthService) {
   }
+  ngOnInit() {
+
+  }
   onSubmit() {
     this.snackBar.open('Order Submitted', 'retry', {
       duration: 3000,

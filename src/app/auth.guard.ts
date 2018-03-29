@@ -18,9 +18,10 @@ export class AuthGuard implements CanActivate {
     return this.auth.user
       .take(1)
       .map(user => !!user)
+      // tslint:disable-next-line:ter-arrow-parens
       .do(loggedIn => {
         if (!loggedIn) {
-          console.log('access denied')
+          console.log('access denied');
           this.router.navigate(['/login']);
         }
       });

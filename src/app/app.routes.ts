@@ -14,7 +14,6 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { MotustestPage } from './pages/motustest';
 
-
 export const router: Routes = [
     { path: '', redirectTo: 'app', pathMatch: 'full' },
     { path: 'home', component: HomePage },
@@ -25,9 +24,6 @@ export const router: Routes = [
     { path: 'logintest', component: LogintestPage },
     { path: 'motus', component: MotusPage },
     { path: 'motustest', component: MotustestPage },
-    
-    
-
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

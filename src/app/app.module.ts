@@ -84,7 +84,7 @@ import { TestComponent } from './components/test/test.component';
     FormsModule,
     MatFormFieldModule,
     MatCheckboxModule,
-    HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,

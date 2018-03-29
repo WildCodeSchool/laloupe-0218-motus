@@ -6,6 +6,6 @@ export const environment = {
     databaseURL: 'https://motus-8bdcc.firebaseio.com',
     projectId: 'motus-8bdcc',
     storageBucket: 'motus-8bdcc.appspot.com',
-    messagingSenderId: '594968588218'
-  }
+    messagingSenderId: '594968588218',
+  },
 };

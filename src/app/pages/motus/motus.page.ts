@@ -35,29 +35,29 @@ export class MotusPage implements OnInit {
     this.dataSource.filter = filterValue;
   }
   submit() {
-    console.log("ca clique " + this.mot);
-    //this.transform(this.mot);
+    console.log('ca clique ' + this.mot);
+    // this.transform(this.mot);
     this.compareWord(this.mot);
   }
   transform(pmot: string) {
     console.log(pmot.length);
     for (let i = 0; i < pmot.length; i++) {
-      this.arraymot.push(pmot.slice(i, i + 1))
+      this.arraymot.push(pmot.slice(i, i + 1));
       console.log(this.arraymot);
 
     }
   }
   compareWord(pword: string) {
-    let wordAuto: string = "formuler";
-    let arrayWordAuto: Array<string> = [];
-    let arrayPWord: Array<string> = [];
+    const wordAuto = 'formuler';
+    const arrayWordAuto: Array<string> = [];
+    const arrayPWord: Array<string> = [];
 
     for (let i = 0; i < wordAuto.length; i++) {
       arrayWordAuto.push(wordAuto.slice(i, i + 1));
       arrayPWord.push(pword.slice(i, i + 1));
     }
     for (let i = 0; i < 8; i++) {
-      if (arrayPWord[i] == arrayWordAuto[i]) {
+      if (arrayPWord[i] === arrayWordAuto[i]) {
         this.arraymot[i] = arrayWordAuto[i];
       } else {
         this.arraymot[i] = '';
