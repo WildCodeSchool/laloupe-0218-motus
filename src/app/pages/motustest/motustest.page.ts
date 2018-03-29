@@ -14,8 +14,8 @@ import * as firebase from 'firebase/app';
 })
 export class MotustestPage implements OnInit {
   mot: string; // variable de saisie par l utilisateur issue du input
-  nbClick: number = 0 // compteur initialiser a zero permettant de savoir le nombre de coup joué
-  motRef: string = "azertyui"; // variable de test permettant de faire les essais
+  nbClick=0 // compteur initialiser a zero permettant de savoir le nombre de coup joué
+  motRef: string = 'azertyui'; // variable de test permettant de faire les essais
   arrayMot0: string[] = [];
   arrayMot1: string[] = []; 
   arrayMot2: string[] = []; 
@@ -55,22 +55,21 @@ export class MotustestPage implements OnInit {
 
     this.transform(this.motRef, this.arraymotRef)
     this.arrayLettreOk[0]=this.arraymotRef[0];
-    this.arrayMot0 = [this.arraymotRef[0],"","","","","","",""];
+    this.arrayMot0 = [this.arraymotRef[0],'','','','','','',''];
   }
   submit() {
     var i = this.nbClick
-    //console.log("ca clique " + this.mot);
+    //console.log('ca clique ' + this.mot);
     this.transform(this.mot, this.arraymot);
     this.compareWord(this.arraymot);
     for(let j=0; j<this.arraymot.length;j++){
       
       
       this.arrayMotGlobal[i][j] = this.arraymot[j];
-      console.log("toto" + this.arrayMotGlobal[i][j]);
+      console.log('toto' + this.arrayMotGlobal[i][j]);
     }
-    
     console.log(this.arraymot,this.arrayMot0)
-    this.mot="";
+    this.mot='';
     this.arraymot=[];
     this.nbClick += 1
   }
@@ -88,10 +87,10 @@ export class MotustestPage implements OnInit {
         case this.arraymotRef[1]:
           if (i == 1) {
             this.arrayLettreOk.push(parray[i])
-            this.arrayLettreNoOk.push("")
+            this.arrayLettreNoOk.push('')
           } else {
             this.arrayLettreNoOk.push(parray[i])
-            this.arrayLettreOk.push("")
+            this.arrayLettreOk.push('')
 
           }
           break;
@@ -99,65 +98,65 @@ export class MotustestPage implements OnInit {
           //console.log('ok2')
           if (i == 2) {
             this.arrayLettreOk.push(parray[i])
-            this.arrayLettreNoOk.push("")
+            this.arrayLettreNoOk.push('')
           } else {
             this.arrayLettreNoOk.push(parray[i])
-            this.arrayLettreOk.push("")
+            this.arrayLettreOk.push('');
           }
           break;
         case this.arraymotRef[3]:
           //console.log('ok3')
           if (i == 3) {
             this.arrayLettreOk.push(parray[i])
-            this.arrayLettreNoOk.push("")
+            this.arrayLettreNoOk.push('')
           } else {
             this.arrayLettreNoOk.push(parray[i])
-            this.arrayLettreOk.push("")
+            this.arrayLettreOk.push('');
           }
           break;
         case this.arraymotRef[4]:
           //console.log('ok4')
           if (i == 4) {
             this.arrayLettreOk.push(parray[i])
-            this.arrayLettreNoOk.push("")
+            this.arrayLettreNoOk.push('')
           } else {
             this.arrayLettreNoOk.push(parray[i])
-            this.arrayLettreOk.push("")
+            this.arrayLettreOk.push('');
           }
           break;
         case this.arraymotRef[5]:
           //console.log('ok5')
           if (i == 5) {
             this.arrayLettreOk.push(parray[i])
-            this.arrayLettreNoOk.push("")
+            this.arrayLettreNoOk.push('')
           } else {
             this.arrayLettreNoOk.push(parray[i])
-            this.arrayLettreOk.push("")
+            this.arrayLettreOk.push('');
           }
           break;
         case this.arraymotRef[6]:
           //console.log('ok6')
           if (i == 6) {
-            this.arrayLettreOk.push(parray[i])
-            this.arrayLettreNoOk.push("")
+            this.arrayLettreOk.push(parray[i]);
+            this.arrayLettreNoOk.push('');
           } else {
-            this.arrayLettreNoOk.push(parray[i])
-            this.arrayLettreOk.push("")
+            this.arrayLettreNoOk.push(parray[i]);
+            this.arrayLettreOk.push('');
           }
           break;
         case this.arraymotRef[7]:
           //console.log('ok7')
           if (i == 7) {
             this.arrayLettreOk.push(parray[i])
-            this.arrayLettreNoOk.push("")
+            this.arrayLettreNoOk.push('')
           } else {
             this.arrayLettreNoOk.push(parray[i])
-            this.arrayLettreOk.push("")
+            this.arrayLettreOk.push('');
           }
           break;
         default:
-          this.arrayLettreOk.push("")
-          this.arrayLettreNoOk.push("")
+          this.arrayLettreOk.push('')
+          this.arrayLettreNoOk.push('')
           break;
       } // fin du switch
     } // fin du for
@@ -165,7 +164,7 @@ export class MotustestPage implements OnInit {
     this.arrayStoreNoOk = this.arrayLettreNoOk;
     this.arrayLettreOk = [];
     this.arrayLettreNoOk = [];
-    console.log("NONOK " + this.arrayStoreNoOk, "OK " + this.arrayStoreOk);
+    console.log('NONOK ' + this.arrayStoreNoOk, 'OK ' + this.arrayStoreOk);
   } // fin de fonction compare
 }
 

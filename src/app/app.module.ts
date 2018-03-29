@@ -4,15 +4,13 @@ import { NgModule } from '@angular/core';
 // https://angular.io/api/forms/FormsModule
 import { FormsModule } from '@angular/forms';
 // https://angular.io/api/http/HttpModule
-import { HttpModule } from '@angular/http'; 
+import { HttpModule } from '@angular/http';
 // https://material.angular.io/components/dialog/api
-import { MatDialogModule } from '@angular/material/dialog'; 
+import { MatDialogModule } from '@angular/material/dialog';
 // https://angular.io/api/router/RouterModule
 import { RouterModule } from '@angular/router';
 // nessaire au bon fonctionnent de material
-import 'hammerjs'; 
-
-
+import 'hammerjs';
 // importation de composant
 import { AppComponent } from './app.component';
 import { RulesDialogComponent } from './components/rules/rules-dialog/rules-dialog.component';
@@ -35,7 +33,7 @@ import { AuthService } from './auth.service';
 
 // importations des modules pour angular material
 // https://angular.io/api/platform-browser/animations/BrowserAnimationsModule
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -54,7 +52,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 
-// importations de  firebase2 
+
+// importations de  firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
@@ -62,11 +61,9 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 // variable environnement contenenant la localisation pour firebase
 import { environment } from '../environments/environment';
-// necessaire pour les promise et observable 
+// necessaire pour les promise et observable
 import { Observable } from 'rxjs/Observable';
-import { TestComponent } from './components/test/test.component'; 
-
-
+import { TestComponent } from './components/test/test.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,9 +77,7 @@ import { TestComponent } from './components/test/test.component';
     MotusPage,
     TestComponent,
     MotustestPage,
-    
-    
-    
+
   ],
   imports: [
     BrowserModule,
@@ -113,7 +108,7 @@ import { TestComponent } from './components/test/test.component';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     routes
 
-  
+
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],

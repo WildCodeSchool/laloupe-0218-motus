@@ -34,21 +34,21 @@ export class AuthService {
                 } else {
                     return Observable.of(null)
                 }
-            })
+            });
     }
 
 
 
     googleLogin() {
-        const provider = new firebase.auth.GoogleAuthProvider()
+        const provider = new firebase.auth.GoogleAuthProvider();
         return this.oAuthLogin(provider);
     }
 
     private oAuthLogin(provider) {
         return this.afAuth.auth.signInWithPopup(provider)
             .then((credential) => {
-                this.updateUserData(credential.user)
-            })
+                this.updateUserData(credential.user);
+            });
     }
 
 
@@ -62,9 +62,9 @@ export class AuthService {
             email: user.email,
             displayName: user.displayName,
             photoURL: user.photoURL
-        }
+        };
 
-        return userRef.set(data, { merge: true })
+        return userRef.set(data, { merge: true });
 
     }
 
