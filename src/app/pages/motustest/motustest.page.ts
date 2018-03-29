@@ -63,9 +63,10 @@ export class MotustestPage implements OnInit {
     this.transform(this.mot, this.arraymot);
     this.compareWord(this.arraymot);
     for(let j=0; j<this.arraymot.length;j++){
-      console.log(this.arrayMotGlobal[i][j]);
+      
       
       this.arrayMotGlobal[i][j] = this.arraymot[j];
+      console.log("toto" + this.arrayMotGlobal[i][j]);
     }
     
     console.log(this.arraymot,this.arrayMot0)
