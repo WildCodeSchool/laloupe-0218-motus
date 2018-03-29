@@ -2,28 +2,24 @@ import { ModuleWithProviders } from '@angular/core'; // https://angular.io/api/c
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomePage } from './pages/home';
-import { HometestPage } from './pages/hometest';
-import { ContactPage } from './pages/contact';
-import { RulesPage } from './pages/rules';
-import { LoginPage } from './pages/login';
-import { LogintestPage } from './pages/logintest';
-import { MotusPage } from './pages/motus';
+import { ContactComponent } from './contact/contact.component';
 import { TestComponent } from './components/test/test.component';
+import { HomeComponent } from './home/home.component';
+import { RulesComponent } from './rules/rules.component';
+import { LoginComponent } from './login/login.component';
+import { MotusComponent } from './motus/motus.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
-import { MotustestPage } from './pages/motustest';
+
 
 export const router: Routes = [
     { path: '', redirectTo: 'app', pathMatch: 'full' },
-    { path: 'home', component: HomePage },
-    { path: 'hometest', component: HometestPage },
-    { path: 'contact', component: ContactPage },
-    { path: 'rules', component: RulesPage },
-    { path: 'login', component: LoginPage },
-    { path: 'logintest', component: LogintestPage },
-    { path: 'motus', component: MotusPage },
-    { path: 'motustest', component: MotustestPage },
+    { path: 'home', component: HomeComponent },
+    { path: 'contact', component: ContactComponent },
+    { path: 'rules', component: RulesComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'motus', component: MotusComponent },
+
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

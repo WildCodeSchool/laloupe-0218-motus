@@ -16,14 +16,14 @@ import { AppComponent } from './app.component';
 import { RulesDialogComponent } from './components/rules/rules-dialog/rules-dialog.component';
 
 // importation de pages
-import { HomePage } from './pages/home';
-import { ContactPage } from './pages/contact';
-import { RulesPage } from './pages/rules';
-import { LoginPage } from './pages/login';
-import { LogintestPage } from './pages/logintest';
-import { HometestPage } from './pages/hometest';
-import { MotusPage } from './pages/motus';
-import { MotustestPage } from './pages/motustest';
+
+import { ContactComponent } from './contact/contact.component';
+import { TestComponent } from './components/test/test.component';
+import { HomeComponent } from './home/home.component';
+import { RulesComponent } from './rules/rules.component';
+import { LoginComponent } from './login/login.component';
+import { MotusComponent } from './motus/motus.component';
+
 // Services
 
 // importation du composant routes
@@ -63,20 +63,19 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 // necessaire pour les promise et observable
 import { Observable } from 'rxjs/Observable';
-import { TestComponent } from './components/test/test.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    HomePage,
-    HometestPage,
-    ContactPage,
-    RulesPage,
+    HomeComponent,
+    ContactComponent,
+    RulesComponent,
     RulesDialogComponent,
-    LoginPage,
-    LogintestPage,
-    MotusPage,
+    LoginComponent,
+    MotusComponent,
     TestComponent,
-    MotustestPage,
+
 
   ],
   imports: [
