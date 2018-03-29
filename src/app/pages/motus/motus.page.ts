@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,10 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @Component({
   selector: 'motus',
   templateUrl: './motus.page.html',
-  styleUrls: [ './motus.page.scss' ],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./motus.page.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class MotusPage {
+export class MotusPage implements OnInit {
   mot: string;
   lettre1: string;
   lettre2: string;
@@ -60,10 +60,10 @@ export class MotusPage {
       if (arrayPWord[i] == arrayWordAuto[i]) {
         this.arraymot[i] = arrayWordAuto[i];
       } else {
-        this.arraymot[i] = "";
+        this.arraymot[i] = '';
       }
     }
-    //this.arraymot = arrayWordAuto;
+    // this.arraymot = arrayWordAuto;
     console.log(arrayWordAuto);
     const object2 = Object.assign({}, ['a', 'b', 'c']);
     console.log(object2[0]);

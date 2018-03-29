@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
@@ -10,7 +10,7 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./logintest.page.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LogintestPage {
+export class LogintestPage implements OnInit {
   constructor(public afAuth: AngularFireAuth, ) {
   }
   login() {

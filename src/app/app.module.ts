@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // https://angular.io/api/forms/FormsModule
 import { FormsModule } from '@angular/forms';
-// https://angular.io/api/http/HttpModule
-import { HttpModule } from '@angular/http';
+// https://angular.io/api/common/http/HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
 // https://material.angular.io/components/dialog/api
 import { MatDialogModule } from '@angular/material/dialog';
 // https://angular.io/api/router/RouterModule
@@ -106,12 +106,12 @@ import { TestComponent } from './components/test/test.component';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    routes
+    routes,
 
 
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [RulesDialogComponent]
+  entryComponents: [RulesDialogComponent],
 })
 export class AppModule { }
