@@ -4,7 +4,7 @@
     <form class="example-form">
         <mat-form-field class="example-full-width">
             <input matInput placeholder="saisir votre mot" name="word" [(ngModel)]="word" #ctrl="ngModel" class="form-control" required
-                minlength="8" required maxlength="8" appForbiddenName="bob">
+                minlength="8" maxlength="8" appForbiddenName="bob">
         </mat-form-field>
         <button mat-button (click)="sendWord()" [disabled]="word.length != 8">Send</button>
     </form>

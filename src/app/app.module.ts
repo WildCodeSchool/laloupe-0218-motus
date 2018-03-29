@@ -64,7 +64,7 @@ import { environment } from '../environments/environment';
 // necessaire pour les promise et observable
 import { Observable } from 'rxjs/Observable';
 import { HeaderComponent } from './header/header.component';
-
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 
 @NgModule({
   declarations: [
@@ -107,6 +107,7 @@ import { HeaderComponent } from './header/header.component';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    Angular2FontawesomeModule,
     routes,
 
 

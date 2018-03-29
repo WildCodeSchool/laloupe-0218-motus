@@ -8,7 +8,7 @@
   <p>Login to get started...</p>
 
   <button (click)="auth.googleLogin()">
-    <i class="fa fa-google"></i> Connect Google
+    <fa [name]="'google'"></fa> Connect Google
   </button>
 
 </ng-template>
@@ -16,7 +16,7 @@
 <ng-template #authenticated>
   <div *ngIf="auth.user | async as user">
     <h3>Howdy, {{ user.displayName }}</h3>
-    <img [src]="user.photoURL">
+    <img src="user.photoURL" alt="travisthebest">
     <p>UID: {{ user.uid }}</p>
     <p>Favorite Color: {{ user?.favoriteColor }} </p>
     <button (click)="auth.signOut()">Logout</button>
