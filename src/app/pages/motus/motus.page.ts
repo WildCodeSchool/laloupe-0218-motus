@@ -41,7 +41,7 @@ export class MotusPage implements OnInit {
   }
   transform(pmot: string) {
     console.log(pmot.length);
-    for (let i = 0; i < pmot.length; i++) {
+    for (let i = 0; i < pmot.length; i = i + 1) {
       this.arraymot.push(pmot.slice(i, i + 1));
       console.log(this.arraymot);
 
@@ -52,11 +52,11 @@ export class MotusPage implements OnInit {
     const arrayWordAuto: Array<string> = [];
     const arrayPWord: Array<string> = [];
 
-    for (let i = 0; i < wordAuto.length; i++) {
+    for (let i = 0; i < wordAuto.length; i = i + 1) {
       arrayWordAuto.push(wordAuto.slice(i, i + 1));
       arrayPWord.push(pword.slice(i, i + 1));
     }
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 8; i = i + 1) {
       if (arrayPWord[i] === arrayWordAuto[i]) {
         this.arraymot[i] = arrayWordAuto[i];
       } else {
