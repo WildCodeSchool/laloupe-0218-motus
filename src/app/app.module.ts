@@ -63,6 +63,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 // necessaire pour les promise et observable
 import { Observable } from 'rxjs/Observable';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { Observable } from 'rxjs/Observable';
     LoginComponent,
     MotusComponent,
     TestComponent,
+    HeaderComponent,
 
 
   ],

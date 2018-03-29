@@ -1,22 +1,33 @@
-<!-- login.component.html -->
-<mat-card>
-  <mat-toolbar color="primary">
-    <mat-card-title>
-      <i class="material-icons">home</i>
-      <h1>MOTUS</h1>
-    </mat-card-title>
-  </mat-toolbar>
-  <mat-card-content>
-    Bienvenue sur le jeu en ligne Motus !
-    <br> Connectez-vous avec votre compte Google pour continuer.
-  </mat-card-content>
-  <mat-card-actions>
-    <div *ngIf="afAuth.authState | async as user; else showLogin">
-      <button mat-raised-button (click)="logout()">Sign out</button>
+<!-- login.page.html -->
+<div class="container">
+  <div class="row">
+    <div class="col-7 mx-auto">
+      <mat-card class="text-center">
+        <mat-toolbar color="primary" class="justify-content-center">
+          <mat-card-title>
+            <h1>
+              <strong>MOTUS</strong>
+            </h1>
+          </mat-card-title>
+        </mat-toolbar>
+        <mat-card-content>
+          <p>
+            <strong>Bienvenue sur le jeu en ligne Motus !</strong>
+            <br> Connectez-vous avec votre compte Google pour continuer.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <div *ngIf="afAuth.authState | async as user; else showLogin">
+            <button mat-raised-button (click)="logout()">Sign out</button>
+          </div>
+          <ng-template #showLogin>
+            <button mat-raised-button (click)="login()">
+              <span>
+                <i class="fab fa-google"></i> SIGN IN</span>
+            </button>
+          </ng-template>
+        </mat-card-actions>
+      </mat-card>
     </div>
-    <ng-template #showLogin>
-      <button mat-raised-button (click)="login()">Sign in with Google</button>
-    </ng-template>
-
-  </mat-card-actions>
-</mat-card>
+  </div>
+</div>
