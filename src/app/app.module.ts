@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core'; // https://angular.io/guide/ngmodules
-import { FormsModule } from '@angular/forms'; //https://angular.io/api/forms/FormsModule
-import { HttpModule } from '@angular/http'; //https://angular.io/api/http/HttpModule
+import { FormsModule } from '@angular/forms'; // https://angular.io/api/forms/FormsModule
+import { HttpModule } from '@angular/http'; // https://angular.io/api/http/HttpModule
 import { MatDialogModule } from '@angular/material/dialog'; // https://material.angular.io/components/dialog/api
 
-import { RouterModule } from '@angular/router'; //https://angular.io/api/router/RouterModule
+import { RouterModule } from '@angular/router'; // https://angular.io/api/router/RouterModule
 import 'hammerjs'; // nessaire au bon fonctionnent de material
 
 
 import { AppComponent } from './app.component';
-//importation de composant
+// importation de composant
 import { RulesDialogComponent } from './components/rules/rules-dialog/rules-dialog.component';
 
 // importation de pages
