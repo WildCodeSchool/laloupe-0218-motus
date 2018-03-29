@@ -1,15 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core'; // https://angular.io/guide/ngmodules
-import { FormsModule } from '@angular/forms'; // https://angular.io/api/forms/FormsModule
-import { HttpModule } from '@angular/http'; // https://angular.io/api/http/HttpModule
-import { MatDialogModule } from '@angular/material/dialog'; // https://material.angular.io/components/dialog/api
+// https://angular.io/guide/ngmodules
+import { NgModule } from '@angular/core';
+// https://angular.io/api/forms/FormsModule
+import { FormsModule } from '@angular/forms';
+// https://angular.io/api/http/HttpModule
+import { HttpModule } from '@angular/http'; 
+// https://material.angular.io/components/dialog/api
+import { MatDialogModule } from '@angular/material/dialog'; 
+// https://angular.io/api/router/RouterModule
+import { RouterModule } from '@angular/router';
+// nessaire au bon fonctionnent de material
+import 'hammerjs'; 
 
-import { RouterModule } from '@angular/router'; // https://angular.io/api/router/RouterModule
-import 'hammerjs'; // nessaire au bon fonctionnent de material
 
-
-import { AppComponent } from './app.component';
 // importation de composant
+import { AppComponent } from './app.component';
 import { RulesDialogComponent } from './components/rules/rules-dialog/rules-dialog.component';
 
 // importation de pages
@@ -29,7 +34,8 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 
 // importations des modules pour angular material
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // https://angular.io/api/platform-browser/animations/BrowserAnimationsModule
+// https://angular.io/api/platform-browser/animations/BrowserAnimationsModule
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -52,10 +58,13 @@ import { MatListModule } from '@angular/material/list';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { AngularFireAuthModule } from 'angularfire2/auth'; // necessaire pour les promises
-import { environment } from '../environments/environment'; // variable environnement contenenant la localisation pour firebase
+// necessaire pour les promises
+import { AngularFireAuthModule } from 'angularfire2/auth';
+// variable environnement contenenant la localisation pour firebase
+import { environment } from '../environments/environment';
+// necessaire pour les promise et observable 
 import { Observable } from 'rxjs/Observable';
-import { TestComponent } from './components/test/test.component'; // necessaire pour les promise et observable 
+import { TestComponent } from './components/test/test.component'; 
 
 
 @NgModule({
