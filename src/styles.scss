@@ -1,0 +1,93 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+@include mat-core();
+$motus-app-primary: mat-palette($mat-blue);
+$motus-app-accent: mat-palette($mat-cyan);
+$motus-app-theme: mat-light-theme($motus-app-primary, $motus-app-accent);
+@include angular-material-theme($motus-app-theme);
+$dark-primary: mat-palette($mat-red);
+$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-warn: mat-palette($mat-deep-orange);
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+body,
+html,
+.mat-sidenav-container {
+  height: 100vh;
+  background: #e6e9e6;
+
+}
+
+body {
+  margin: 0px;
+  
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: row
+}
+
+.filler {
+  visibility: hidden;
+  flex-grow: 1;
+}
+
+$font-xs:10px;
+$font-sm:12px;
+$font-md:14px;
+$font-lg:16px;
+$font-xl:20px;
+$padding-xs:4px;
+$padding-sm:8px;
+$padding-md:16px;
+$padding-lg:24px;
+$padding-xl:40px;
+$orange:#FF9800;
+$grey:#757575;
+$grey-dark:#424242;
+* {
+  font-family: Arial;
+}
+
+a,
+a:active {
+  color: #2196F3;
+}
+
+/*--------------------------------------------------------------
+Accessibility
+--------------------------------------------------------------*/
+
+/* Text meant only for screen readers */
+
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+    /* Above WP toolbar */
+}
