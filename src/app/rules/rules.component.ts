@@ -5,7 +5,6 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-rules',
   templateUrl: './rules.component.html',
-  styleUrls: ['./rules.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class RulesComponent implements OnInit {
