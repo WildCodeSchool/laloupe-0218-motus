@@ -2,7 +2,6 @@
     // names of npm modules to load into htmllint
     "plugins": [],
     "attr-name-style": false,
-    "indent-width": false,
     "id-class-style": false,
     "line-end-style": false,
     "attr-req-value": false
