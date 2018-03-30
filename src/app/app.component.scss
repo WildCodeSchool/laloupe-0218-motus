@@ -6,6 +6,12 @@
     } //@include angular-material-theme($dark-theme);
     .mat-toolbar {
         padding: 0px;
+        .mat-toolbar-row {
+          background: mat-color($motus-app-primary, 500);
+          button {
+              color: black;
+          }
+        }
         .mat-toolbar-row:first-of-type {
             height: inherit;
             background: mat-color($motus-app-primary, 700);
@@ -16,12 +22,6 @@
                 padding: inherit;
                 min-width: inherit;
             }
-        }
-    }
-    .mat-toolbar-row {
-        background: mat-color($motus-app-primary, 500);
-        button {
-            color: black;
         }
     }
     .container {
