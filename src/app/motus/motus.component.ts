@@ -13,7 +13,8 @@ import * as firebase from 'firebase/app';
 export class MotusComponent implements OnInit {
 
   word = '';
-  letter = [];
+  goodLetter = [];
+  myTry = 0;
   // grid: string[][] = [
   //   ['f', 'o', 'r', 'm', 'u', 'l', 'e', 'r']
   // ];
@@ -28,65 +29,90 @@ export class MotusComponent implements OnInit {
     this.afAuth.auth.signOut();
   }
   ngOnInit() {
-
+    this.initialiserGrid();
   }
-
-  sendWord() {
-    console.log(this.word);
-    let i = 0;
-    this.grid.push(this.word.split(''));
-
-    this.grid.push([]);
-
+  initialiserGrid() {
+    let line = 0;
+    let col = 0;
     this.randomWord.split('');
-    console.log(this.randomWord);
-    while (i < 8) {
-      if (this.grid[1][i] === this.randomWord[i]) {
-        this.grid[2][i] = this.randomWord[i];
-        console.log('lettre identique');
-      } else {
-        this.grid[2][i] = '';
-        console.log('lettre differente');
+    while (line < 8) {
+      this.grid.push([]);
+      while (col < 8) {
+        if (col === 0 && line === 0) {
+          this.grid[line][col] = this.randomWord[0].toUpperCase();
+        } else {
+          this.grid[line][col] = '.';
+        }
+        col = col + 1;
       }
-      console.log('saisi: ' + this.grid[1][i]);
-      console.log('soluce: ' + this.randomWord[i]);
-      i = i + 1;
+      line = line + 1;
+      col = 0;
     }
+  }
+  sendWord(line: number) {
+    // console.log(this.word);
+    // console.log(this.grid);
+    // this.grid[0][0] = 'A';
+    let col = 0;
 
+    this.word = this.word.toUpperCase();
+    this.randomWord = this.randomWord.toUpperCase();
+    this.word.split('');
+    this.randomWord.split('');
 
+    while (col < 8) {
+      this.grid[line][col] = this.word[col];
+      if (this.grid[line][col] === this.randomWord[col]) {
+        this.grid[line + 1][col] = this.randomWord[col];
+      } else {
+        if (col === 0) {
+          this.grid[line + 1][col] = this.randomWord[col];
+        } else {
+          if (line !== 0 && this.grid[line - 1][col] === this.randomWord[col]) {
+            this.grid[line + 1][col] = this.randomWord[col];
+          } else {
+            this.grid[line + 1][col] = '.';
+          }
+        }
+      }
+      col = col + 1;
+    }
     this.word = '';
-
   }
 
-  submit() {
-    // console.log('ca clique ' + this.mot);
-    // this.transform(this.mot);
-    this.compareWord(this.word);
+  playGame() {
+    if (this.myTry < 8) {
+      this.sendWord(this.myTry);
+    } else {
+      this.looseGame();
+      console.log('Game Over, Try Again !!!');
+    }
+    this.myTry = this.myTry + 1;
   }
-  compareWord(pword: string) {
-
-    //    let wordAuto = ['formuler','azertyui','qsdfghjk','wxcvbnnb','mlkjhgfd','poiuytre','poutress','ascvbhui'];
-    /*let arrayWordAuto: Array<string> = [];
-    let arrayPWord: Array<string> = [];
-    let col = 1;
-    let lig = 1;
-    for (let i = 0; i < 8; i++) {
-      this.arraymot[lig - col] = pword[i];
-      // if (arrayPWord[i] == arrayWordAuto[i]) {
-      //   this.arraymot[lig - col] = arrayWordAuto[i];
-      // } else {
-      //   this.arraymot[lig - col] = '';
-      // }
-      col++;
-    }*/
-
-    // this.arraymot = arrayWordAuto;
-    // console.log(arrayWordAuto);
-    // const object2 = Object.assign({}, ['a', 'b', 'c']);
-    // console.log(object2[0]);
-    // for (let i = 1; i < 9; i++) {
-    //   this.arraymot[1-i] = 'A';
-    // }
-    // document.getElementById('row1-2').innerText = 'B';
+  looseGame() {
+    let col = 0;
+    let line = 1;
+    // const looseWord = '..GAME..';
+    while (col < 8) {
+      this.grid[0][col] = this.randomWord[col];
+      col = col + 1;
+    }
+    col = 0;
+    // looseWord.split('');
+    while (line < 8) {
+      if (line === 2) {
+        this.grid[2] = this.grid[2].join('').substr(2, 4).replace('....', '..GAME..').split('');
+      } else if (line === 3) {
+        this.grid[3] = this.grid[3].join('').substr(2, 4).replace('....', '..OVER..').split('');
+      } else {
+        while (col < 8) {
+          this.grid[line][col] = '.';
+          col = col + 1;
+        }
+      }
+      col = 0;
+      line = line + 1;
+    }
+    // console.log(this.grid[2].join('').substr(2, 4).replace('....', '..GAME..').split(''));
   }
 }
