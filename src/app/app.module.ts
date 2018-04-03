@@ -14,11 +14,12 @@ import 'hammerjs';
 // importation de composant
 import { AppComponent } from './app.component';
 import { RulesDialogComponent } from './components/rules/rules-dialog/rules-dialog.component';
-
+import { WinDialogComponent } from './components/win/win-dialog.component';
+import { LooseDialogComponent } from './components/loose/loose-dialog.component';
 // importation de pages
 
 import { ContactComponent } from './contact/contact.component';
-import { TestComponent } from './components/test/test.component';
+
 import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
 import { LoginComponent } from './login/login.component';
@@ -75,7 +76,8 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
     RulesDialogComponent,
     LoginComponent,
     MotusComponent,
-    TestComponent,
+    WinDialogComponent,
+    LooseDialogComponent,
     HeaderComponent,
 
 
@@ -114,6 +116,6 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [RulesDialogComponent],
+  entryComponents: [RulesDialogComponent, WinDialogComponent, LooseDialogComponent],
 })
 export class AppModule { }

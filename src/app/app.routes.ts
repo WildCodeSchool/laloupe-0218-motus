@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
-import { TestComponent } from './components/test/test.component';
 import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
 import { LoginComponent } from './login/login.component';

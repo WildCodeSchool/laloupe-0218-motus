@@ -28,17 +28,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## angular-cli-ghpages
 
-
-<hr>
-
 ![Screenshot](screenshot-travis.png)
 
-<hr>
-
-Publish to any gh-pages branch on GitHub (or any other branch on any other remote).  
-Made for angular-cli users.  
-Made with Travis-CI in mind.  
-Brought to you by the [angular.schule](https://angular.schule/) team! 
+Publish to any gh-pages branch on GitHub (or any other branch on any other remote).
+Made for angular-cli users.
+Made with Travis-CI in mind.
+Brought to you by the [angular.schule](https://angular.schule/) team!
 
 ## About
 
@@ -49,7 +44,6 @@ The [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages)
 ## Changelog
 
 A detailed changelog is available in the [releases](https://github.com/angular-schule/angular-cli-ghpages/releases) section.
-
 
 ## Installation & Setup
 
@@ -67,7 +61,7 @@ npm i -g angular-cli-ghpages
 
 ## Usage
 
-Execute `angular-cli-ghpages` in order to deploy the project with a build from `dist` folder.  
+Execute `angular-cli-ghpages` in order to deploy the project with a build from `dist` folder.
 __Note: you have to create the  `dist` folder in before (e.g. `ng build --prod`)__
 
 Usage:
@@ -100,8 +94,6 @@ ngh [OPTIONS]
 
 If you want to push to `gh-pages` on the same repository with your default credentials, then just enter `ngh` without any options.
 
-
-
 ## Extra
 
 For your convenience, the command will recognize the [environment variable](https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings) `GH_TOKEN` and will replace this pattern in the `--repo` string. Please __do NOT disable the silent mode__ if you have any credentials in the repository URL! Read more about [Github tokens here](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
@@ -110,7 +102,6 @@ In example, the following command runs [on our Travis-CI](https://travis-ci.org/
 
 ```bash
 angular-cli-ghpages --repo=https://GH_TOKEN@github.com/organisation/your-repo.git --name="Displayed Username" --email=mail@example.org
-```
 > You have to treat the GH_TOKEN as secure as a password!
 
 
@@ -191,7 +182,7 @@ Keep this untouched if the repository URL or other information passed to git com
  * __optional__
  * Default: `dist`
 
-Directory for all published sources, relative to the project-root.  
+Directory for all published sources, relative to the project-root.
 Most probably no change is required here.
 This option can be used to deploy completely different folders,
 which are not related at all to angular.
@@ -219,8 +210,6 @@ With `--no-dotfiles` files starting with `.` are ignored.
 
 Run through without making any changes. This can be very usefull, because it outputs what would happend without doing anything.
 
-
-
 ## FAQ
 
 Before posting any issue, [please read the FAQ first](https://github.com/angular-schule/angular-cli-ghpages/wiki/FAQ).
@@ -230,7 +219,7 @@ Code released under the [MIT license](LICENSE).
 
 <hr>
 
-<img src="http://assets.angular.schule/logo-angular-schule.png" height="60">  
+<img src="http://assets.angular.schule/logo-angular-schule.png" height="60">
 
 ### &copy; 2018 https://angular.schule
 
