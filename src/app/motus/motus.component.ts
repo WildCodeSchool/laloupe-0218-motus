@@ -22,6 +22,8 @@ export class MotusComponent implements OnInit {
   // ];
   grid: string[][] = [['']];
   randomWord = 'formuler';
+  gridGood: string[] = [''];
+  gridBad: string[] = [''];
   constructor(private dialog: MatDialog, public afAuth: AngularFireAuth) {
   }
   login() {
@@ -64,22 +66,40 @@ export class MotusComponent implements OnInit {
     this.randomWord.split('');
 
     while (col < 8) {
+      let colRandomWord = 0;
       this.grid[line][col] = this.word[col];
-      if (this.grid[line][col] === this.randomWord[col]) {
-        this.grid[line + 1][col] = this.randomWord[col];
-      } else {
-        if (col === 0) {
-          this.grid[line + 1][col] = this.randomWord[col];
-        } else {
-          if (line !== 0 && this.grid[line - 1][col] === this.randomWord[col]) {
-            this.grid[line + 1][col] = this.randomWord[col];
+      while (colRandomWord < 8) {
+        if (col === colRandomWord) {
+          if (this.grid[line][col] === this.randomWord[colRandomWord]) {
+            this.grid[line + 1][col] = this.randomWord[colRandomWord];
+            this.gridGood.push(this.randomWord[colRandomWord]);
           } else {
-            this.grid[line + 1][col] = '.';
+            if (col === 0) {
+              this.grid[line + 1][col] = this.randomWord[colRandomWord];
+            } else {
+              if (line !== 0 && this.grid[line - 1][col] === this.randomWord[colRandomWord]) {
+                this.grid[line + 1][col] = this.randomWord[colRandomWord];
+              } else {
+                this.grid[line + 1][col] = '.';
+              }
+            }
+            this.gridGood.push('.');
+          }
+        } else {
+          if (col !== colRandomWord) {
+            if (this.grid[line][col] === this.randomWord[colRandomWord]) {
+              this.gridBad.push(this.randomWord[colRandomWord]);
+            } else {
+              this.gridBad.push('.');
+            }
           }
         }
+
+        col = col + 1;
       }
-      col = col + 1;
+      colRandomWord = colRandomWord + 1;
     }
+    
 
     this.word = '';
     for (let i = 0; i < this.randomWord.length; i = i + 1) {
