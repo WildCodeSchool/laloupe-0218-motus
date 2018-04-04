@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { MatInputModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +15,7 @@ import { LooseDialogComponent } from '../components/loose/loose-dialog.component
 })
 export class MotusComponent implements OnInit {
   word = '';
+  wordwin = '';
   goodLetter = [];
   myTry = 0;
   // grid: string[][] = [
@@ -22,8 +23,6 @@ export class MotusComponent implements OnInit {
   // ];
   grid: string[][] = [['']];
   randomWord = 'formuler';
-  gridGood: string[] = [''];
-  gridBad: string[] = [''];
   constructor(private dialog: MatDialog, public afAuth: AngularFireAuth) {
   }
   login() {
@@ -66,40 +65,22 @@ export class MotusComponent implements OnInit {
     this.randomWord.split('');
 
     while (col < 8) {
-      let colRandomWord = 0;
       this.grid[line][col] = this.word[col];
-      while (colRandomWord < 8) {
-        if (col === colRandomWord) {
-          if (this.grid[line][col] === this.randomWord[colRandomWord]) {
-            this.grid[line + 1][col] = this.randomWord[colRandomWord];
-            this.gridGood.push(this.randomWord[colRandomWord]);
-          } else {
-            if (col === 0) {
-              this.grid[line + 1][col] = this.randomWord[colRandomWord];
-            } else {
-              if (line !== 0 && this.grid[line - 1][col] === this.randomWord[colRandomWord]) {
-                this.grid[line + 1][col] = this.randomWord[colRandomWord];
-              } else {
-                this.grid[line + 1][col] = '.';
-              }
-            }
-            this.gridGood.push('.');
-          }
+      if (this.grid[line][col] === this.randomWord[col]) {
+        this.grid[line + 1][col] = this.randomWord[col];
+      } else {
+        if (col === 0) {
+          this.grid[line + 1][col] = this.randomWord[col];
         } else {
-          if (col !== colRandomWord) {
-            if (this.grid[line][col] === this.randomWord[colRandomWord]) {
-              this.gridBad.push(this.randomWord[colRandomWord]);
-            } else {
-              this.gridBad.push('.');
-            }
+          if (line !== 0 && this.grid[line - 1][col] === this.randomWord[col]) {
+            this.grid[line + 1][col] = this.randomWord[col];
+          } else {
+            this.grid[line + 1][col] = '.';
           }
         }
-
-        col = col + 1;
       }
-      colRandomWord = colRandomWord + 1;
+      col = col + 1;
     }
-    
 
     this.word = '';
     for (let i = 0; i < this.randomWord.length; i = i + 1) {
@@ -122,6 +103,8 @@ export class MotusComponent implements OnInit {
   }
 
   loosePopup(): void {
+    const wordwin = this.randomWord;
+    console.log(this.randomWord);
     const dialogRef = this.dialog.open(LooseDialogComponent, {
       width: '250px',
     });
@@ -133,7 +116,8 @@ export class MotusComponent implements OnInit {
     if (this.myTry < 7) {
       this.sendWord(this.myTry);
     } else {
-      this.loosePopup();
+      // this.loosePopup();
+      this.looseGame();
       console.log('Game Over, Try Again !!!');
     }
     this.myTry = this.myTry + 1;
@@ -147,21 +131,17 @@ export class MotusComponent implements OnInit {
       col = col + 1;
     }
     col = 0;
+
     // looseWord.split('');
     while (line < 8) {
-      if (line === 2) {
-        this.grid[2] = this.grid[2].join('').substr(2, 4).replace('....', '..GAME..').split('');
-      } else if (line === 3) {
-        this.grid[3] = this.grid[3].join('').substr(2, 4).replace('....', '..OVER..').split('');
-      } else {
-        while (col < 8) {
-          this.grid[line][col] = '.';
-          col = col + 1;
-        }
+      while (col < 8) {
+        this.grid[line][col] = '.';
+        col = col + 1;
       }
-      col = 0;
       line = line + 1;
+      col = 0;
     }
+    this.loosePopup();
     // console.log(this.grid[2].join('').substr(2, 4).replace('....', '..GAME..').split(''));
   }
 }

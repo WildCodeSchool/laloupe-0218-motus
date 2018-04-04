@@ -2,6 +2,11 @@
 <h2 mat-dialog-title>Gros naze!!!!</h2>
 <mat-dialog-content>
     <p>YOU LOOSE THE PARTY </p>
+    <h2>{{ title }}</h2>
     
 </mat-dialog-content>
 <button mat-raised-button (click)="onNoClick()">Close</button>
+<li *ngIf="wordwin">
+    in order to win:
+    <i>{{wordwin}}</i>
+</li>
