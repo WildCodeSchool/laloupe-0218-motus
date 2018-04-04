@@ -17,6 +17,7 @@ export class MotusComponent implements OnInit {
   word = '';
   wordwin = '';
   goodLetter = [];
+  badLetter = [];
   myTry = 0;
   // grid: string[][] = [
   //   ['f', 'o', 'r', 'm', 'u', 'l', 'e', 'r']
@@ -53,10 +54,8 @@ export class MotusComponent implements OnInit {
     }
   }
   sendWord(line: number) {
-    // console.log(this.word);
-    // console.log(this.grid);
-    // this.grid[0][0] = 'A';
     let col = 0;
+    let column = 0;
     let count = 0;
 
     this.word = this.word.toUpperCase();
@@ -68,11 +67,21 @@ export class MotusComponent implements OnInit {
       this.grid[line][col] = this.word[col];
       if (this.grid[line][col] === this.randomWord[col]) {
         this.grid[line + 1][col] = this.randomWord[col];
+        this.goodLetter[col] = this.randomWord[col];
       } else {
+        // console.log('avant boucle: ' + this.badLetter);
+        while (column < 8) {
+          if (this.grid[line][col] === this.randomWord[column]) {
+            this.badLetter[col] = this.randomWord[column];
+          }
+          column = column + 1;
+        }
+        // console.log('apres boucle: ' + this.badLetter);
+        column = 0;
         if (col === 0) {
           this.grid[line + 1][col] = this.randomWord[col];
         } else {
-          if (line !== 0 && this.grid[line - 1][col] === this.randomWord[col]) {
+          if (line !== 0 && this.goodLetter[col] === this.randomWord[col]) {
             this.grid[line + 1][col] = this.randomWord[col];
           } else {
             this.grid[line + 1][col] = '.';
@@ -81,7 +90,7 @@ export class MotusComponent implements OnInit {
       }
       col = col + 1;
     }
-
+    this.badLetter = [];
     this.word = '';
     for (let i = 0; i < this.randomWord.length; i = i + 1) {
       if (this.grid[line + 1][i] === '.') {
@@ -118,7 +127,6 @@ export class MotusComponent implements OnInit {
     } else {
       // this.loosePopup();
       this.looseGame();
-      console.log('Game Over, Try Again !!!');
     }
     this.myTry = this.myTry + 1;
   }
