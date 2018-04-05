@@ -65,6 +65,7 @@ import { environment } from '../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { HeaderComponent } from './header/header.component';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
     MotusComponent,
     TestComponent,
     HeaderComponent,
+    NavbarComponent,
 
 
   ],
