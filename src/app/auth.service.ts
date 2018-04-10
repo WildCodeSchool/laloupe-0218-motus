@@ -39,7 +39,16 @@ export class AuthService {
     const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
+  get authState() {
+    return this.afAuth.authState;
+  }
+  login() {
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
 
+  logout() {
+    this.afAuth.auth.signOut();
+  }
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
             .then((credential) => {

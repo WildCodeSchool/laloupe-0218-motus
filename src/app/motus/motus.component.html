@@ -1,24 +1,11 @@
 <app-navbar></app-navbar>
 <!-- motus.component.html -->
 <!-- rules.component.html -->
-<div *ngIf="auth.user | async; then authenticated else guest">
-    <!-- template will replace this div -->
-</div>
-<ng-template #guest>
-    <h3>Howdy, GUEST</h3>
-    <p>Login to get started...</p>
 
-    <button (click)="auth.googleLogin()">
-        <fa [name]="'google'"></fa> Connect Google
-    </button>
-
-</ng-template>
-<!-- User logged in -->
-<ng-template #authenticated>
     <div *ngIf="auth.user | async as user">
-        <app-navbar></app-navbar>
+        
         <h3>Howdy, {{ user.displayName }}</h3>
-        <img src="user.photoURL" alt="travisthebest">
+        <img [src]="user.photoURL" alt="travisthebest">
         <p>UID: {{ user.uid }}</p>
         <p>Favorite Color: {{ user?.favoriteColor }} </p>
         <button (click)="auth.signOut()">Logout</button>
@@ -37,4 +24,3 @@
             <mat-grid-tile *ngFor="let letter of word">{{letter}}</mat-grid-tile>
         </mat-grid-list>
     </div>
-</ng-template>

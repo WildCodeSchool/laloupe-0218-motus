@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { MatInputModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +16,7 @@ import { AuthService } from '../auth.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class MotusComponent implements OnInit {
+  authSubscription: any;
   word = '';
   wordwin = '';
   goodLetter = [];
@@ -25,8 +27,11 @@ export class MotusComponent implements OnInit {
   // ];
   grid: string[][] = [['']];
   randomWord = 'formuler';
-  constructor(private dialog: MatDialog, public afAuth: AngularFireAuth, public auth: AuthService) {
+  constructor(private dialog: MatDialog, public afAuth: AngularFireAuth, public auth: AuthService, private router: Router) {
   }
+
+
+
   login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
@@ -35,7 +40,18 @@ export class MotusComponent implements OnInit {
   }
   ngOnInit() {
     this.initialiserGrid();
+    this.authSubscription = this.auth.authState.subscribe((user) => {
+      if (!user) {
+        this.router.navigate(['login']);
+      }
+    });
   }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
+  }
+
   initialiserGrid() {
     let line = 0;
     let col = 0;
