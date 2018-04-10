@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { AuthService } from './../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,26 @@ import * as firebase from 'firebase/app';
   encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit {
-
-  constructor(public afAuth: AngularFireAuth) {
+  authSubscription;
+  constructor(public auth: AuthService, private router: Router) {
   }
   login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.auth.login();
   }
   logout() {
-    this.afAuth.auth.signOut();
+    this.auth.logout();
   }
   ngOnInit() {
+    this.authSubscription = this.auth.authState.subscribe((user) => {
+      if (user) {
+        this.router.navigate(['matchmaking']);
+      }
+    });
+  }
 
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
   }
 
 }

@@ -17,29 +17,47 @@ interface User {
 @Injectable()
 export class AuthService {
 
-  user: Observable<User>;
+  user: any;
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router) {
 
         //// Get auth data, then get firestore user document || null
-    this.user = this.afAuth.authState
-            // tslint:disable-next-line:ter-arrow-parens
-            .switchMap(user => {
-              if (user) {
-                return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-              // tslint:disable-next-line:no-else-after-return
-              } else {
-                return Observable.of(null);
-              }
-            });
+      // this.afAuth.authState
+      //       // tslint:disable-next-line:ter-arrow-parens
+      //       .switchMap(user => {
+      //         if (user) {
+      //           this.user = user;
+      //           console.log('toto', user);
+      //           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+      //         // tslint:disable-next-line:no-else-after-return
+      //         } else {
+      //           return Observable.of(null);
+      //         }
+      //       });
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+    });
   }
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
+  get authState() {
+    return this.afAuth.authState;
+  }
+  login() {
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
 
+  logout() {
+    this.afAuth.auth.signOut();
+  }
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
             .then((credential) => {

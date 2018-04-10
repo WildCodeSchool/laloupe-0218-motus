@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,9 +9,10 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
-
-  ngOnInit() {
+  authSubscription: any;
+  constructor(public auth: AuthService) {
   }
+  ngOnInit() {
 
+  }
 }

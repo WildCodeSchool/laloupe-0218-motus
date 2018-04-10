@@ -66,6 +66,7 @@ import { environment } from '../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     WinDialogComponent,
     LooseDialogComponent,
     NavbarComponent,
+    MatchmakingComponent,
 
 
   ],
