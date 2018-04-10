@@ -64,8 +64,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 // necessaire pour les promise et observable
 import { Observable } from 'rxjs/Observable';
-import { HeaderComponent } from './header/header.component';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +78,7 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
     MotusComponent,
     WinDialogComponent,
     LooseDialogComponent,
-    HeaderComponent,
+    NavbarComponent,
 
 
   ],
