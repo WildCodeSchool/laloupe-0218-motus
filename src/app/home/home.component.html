@@ -1,30 +1,14 @@
-<!-- home.component.html -->
-<div *ngIf="auth.user | async; then authenticated else guest">
-    <!-- template will replace this div -->
-
-</div>
-<ng-template #guest>
-    <h3>Howdy, GUEST</h3>
-    <p>Login to get started...</p>
-
-    <button (click)="auth.googleLogin()">
-        <fa [name]="'google'"></fa> Connect Google
-    </button>
-
-</ng-template>
-<!-- User logged in -->
-<ng-template #authenticated>
-    <div *ngIf="auth.user | async as user">
-        <h3>Howdy, {{ user.displayName }}</h3>
-        <img src="user.photoURL" alt="travisthebest">
-        <p>UID: {{ user.uid }}</p>
-        <p>Favorite Color: {{ user?.favoriteColor }} </p>
-        <button (click)="auth.signOut()">Logout</button>
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+    <div class="row">
+        <div class="mx-auto text-center align-middle">
+            <img src="../../assets/img/logo_motus.png">
+            <br>
+            <iframe width="650" height="350" src="https://www.youtube.com/embed/CHUHD89l5Yw" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+            <br>
+            <br />
+            <button mat-raised-button class="justify-content-center">START PLAYING NOW !</button>
+            <button mat-raised-button class="justify-content-center">CREDITS</button>
+        </div>
     </div>
-    <mat-tab-group>
-        <mat-tab label="Onglet 1"></mat-tab>
-        <mat-tab label="Onglet 2"></mat-tab>
-        <mat-tab label="Onglet 3"></mat-tab>
-        <mat-tab label="Onglet 4"></mat-tab>
-    </mat-tab-group>
-</ng-template>
+</div>
