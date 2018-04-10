@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { MatInputModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import * as firebase from 'firebase/app';
@@ -27,16 +26,16 @@ export class MotusComponent implements OnInit {
   // ];
   grid: string[][] = [['']];
   randomWord = 'formuler';
-  constructor(private dialog: MatDialog, public afAuth: AngularFireAuth, public auth: AuthService, private router: Router) {
+  constructor(private dialog: MatDialog, public auth: AuthService, private router: Router) {
   }
 
 
 
   login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.auth.login();
   }
   logout() {
-    this.afAuth.auth.signOut();
+    this.auth.logout();
   }
   ngOnInit() {
     this.initialiserGrid();
