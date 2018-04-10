@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.authSubscription = this.auth.authState.subscribe((user) => {
       if (user) {
-        this.router.navigate(['motus']);
+        this.router.navigate(['matchmaking']);
       }
     });
   }
