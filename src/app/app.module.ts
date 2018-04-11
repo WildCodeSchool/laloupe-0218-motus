@@ -67,6 +67,8 @@ import { Observable } from 'rxjs/Observable';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatchmakingComponent } from './matchmaking/matchmaking.component';
+import { PlayercontainerComponent } from './components/playercontainer/playercontainer.component';
+import { Playercontainer2Component } from './components/playercontainer2/playercontainer2.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { MatchmakingComponent } from './matchmaking/matchmaking.component';
     LooseDialogComponent,
     NavbarComponent,
     MatchmakingComponent,
+    PlayercontainerComponent,
+    Playercontainer2Component,
 
 
   ],

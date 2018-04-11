@@ -8,6 +8,7 @@ import { LooseDialogComponent } from '../components/loose/loose-dialog.component
 import { AuthService } from '../auth.service';
 
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Player } from '../models/player';
 
 @Component({
   selector: 'app-motus',
@@ -29,7 +30,15 @@ export class MotusComponent implements OnInit {
   // ];
   grid: string[][] = [['']];
   randomWord = 'formuler';
+
+  playerOne = new Player();
+  playerTwo = new Player();
+
+
+
   constructor(private dialog: MatDialog, public auth: AuthService, private router: Router, private afs: AngularFirestore, ) {
+    this.playerOne.name = "Totor";
+    this.playerTwo.name = "Martine";
   }
 
 
