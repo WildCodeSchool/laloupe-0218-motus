@@ -24,9 +24,7 @@ export class MotusComponent implements OnInit {
   goodLetter = [];
   badLetter = [];
   myTry = 0;
-  // grid: string[][] = [
-  //   ['f', 'o', 'r', 'm', 'u', 'l', 'e', 'r']
-  // ];
+  
   grid: string[][] = [['']];
   randomWord = 'formuler';
   constructor(private dialog: MatDialog, public auth: AuthService, private router: Router, private afs: AngularFirestore, ) {
