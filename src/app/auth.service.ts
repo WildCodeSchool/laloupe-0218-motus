@@ -36,7 +36,7 @@ export class AuthService {
       //           return Observable.of(null);
       //         }
       //       });
-   
+
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.user = user;

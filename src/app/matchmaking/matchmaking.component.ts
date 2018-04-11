@@ -4,6 +4,7 @@ import { Room } from './../models/room';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+// tslint:disable-next-line:import-blacklist
 import { Subscription } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 
@@ -37,12 +38,14 @@ export class MatchmakingComponent implements OnInit {
   getRooms() {
     const roomsCollection = this.db.collection<Room>('rooms');
 
+    // tslint:disable-next-line:no-shadowed-variable
     const snapshot = roomsCollection.snapshotChanges().take(1).subscribe((snapshot) => {
       const player = new Player();
       player.name = this.authService.user.displayName;
 
       for (const snapshotItem of snapshot) {
         const roomId = snapshotItem.payload.doc.id;
+        // tslint:disable-next-line:no-shadowed-variable
         const room = snapshotItem.payload.doc.data() as Room;
 
         if (Object.keys(room.players).length === 1) {
