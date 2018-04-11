@@ -6,7 +6,7 @@ import * as firebase from 'firebase/app';
 import { WinDialogComponent } from '../components/win/win-dialog.component';
 import { LooseDialogComponent } from '../components/loose/loose-dialog.component';
 import { AuthService } from '../auth.service';
-
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-motus',
@@ -21,12 +21,17 @@ export class MotusComponent implements OnInit {
   goodLetter = [];
   badLetter = [];
   myTry = 0;
+  wordbank;
   // grid: string[][] = [
   //   ['f', 'o', 'r', 'm', 'u', 'l', 'e', 'r']
   // ];
   grid: string[][] = [['']];
-  randomWord = 'formuler';
-  constructor(private dialog: MatDialog, public auth: AuthService, private router: Router) {
+  randomWord: string;
+  constructor(
+    private afs: AngularFirestore,
+    private dialog: MatDialog,
+    public auth: AuthService,
+    private router: Router) {
   }
 
 
@@ -38,14 +43,22 @@ export class MotusComponent implements OnInit {
     this.auth.logout();
   }
   ngOnInit() {
-    this.initialiserGrid();
+
     this.authSubscription = this.auth.authState.subscribe((user) => {
       if (!user) {
         this.router.navigate(['login']);
       }
     });
+    this.afs.doc('wordbank/UR5mwNbejke3tekQMtHU').valueChanges().subscribe((wordbank) => {
+      this.wordbank = wordbank;
+      this.setRandomWord();
+    });
   }
 
+  setRandomWord() {
+    this.randomWord = this.wordbank.words[Math.floor(Math.random() * this.wordbank.words.length)];
+    console.log(this.randomWord);
+  }
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
@@ -54,6 +67,7 @@ export class MotusComponent implements OnInit {
   initialiserGrid() {
     let line = 0;
     let col = 0;
+
     this.randomWord.split('');
     while (line < 8) {
       this.grid.push([]);

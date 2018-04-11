@@ -14,6 +14,7 @@
     <div class="example-container mat-elevation-z8">
         <form class="example-form">
             <mat-form-field class="example-full-width">
+                
                 <input matInput placeholder="saisir votre mot" name="word" [(ngModel)]="word" #ctrl="ngModel" class="form-control" required
                     minlength="8" maxlength="8" appForbiddenName="bob">
             </mat-form-field>
@@ -24,3 +25,6 @@
             <mat-grid-tile *ngFor="let letter of word">{{letter}}</mat-grid-tile>
         </mat-grid-list>
     </div>
+
+<button (click)="getRandomWord()"> test </button>
+
