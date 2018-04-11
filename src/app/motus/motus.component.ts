@@ -41,16 +41,18 @@ export class MotusComponent implements OnInit {
     this.auth.logout();
   }
   ngOnInit() {
-    this.initialiserGrid();
+    this.afs.doc('wordbank/UR5mwNbejke3tekQMtHU').valueChanges().subscribe((wordbank) => {
+      this.wordbank = wordbank;
+      this.setRandomWord();
+      this.initialiserGrid();
+    });
+    
     this.authSubscription = this.auth.authState.subscribe((user) => {
       if (!user) {
         this.router.navigate(['login']);
       }
     });
-    this.afs.doc('wordbank/UR5mwNbejke3tekQMtHU').valueChanges().subscribe((wordbank) => {
-      this.wordbank = wordbank;
-      this.setRandomWord();
-    });
+    
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -180,4 +182,5 @@ export class MotusComponent implements OnInit {
     this.loosePopup();
     // console.log(this.grid[2].join('').substr(2, 4).replace('....', '..GAME..').split(''));
   }
+  
 }
