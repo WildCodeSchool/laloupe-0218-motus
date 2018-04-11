@@ -25,9 +25,16 @@ export class MotusComponent implements OnInit {
   goodLetter = [];
   badLetter = [];
   myTry = 0;
-  
+
   grid: string[][] = [['']];
   randomWord = 'formuler';
+<<<<<<< HEAD
+  constructor(
+    private dialog: MatDialog,
+    public auth: AuthService,
+    private router: Router,
+    private afs: AngularFirestore) {
+=======
 
   playerOne = new Player();
   playerTwo = new Player();
@@ -37,6 +44,7 @@ export class MotusComponent implements OnInit {
   constructor(private dialog: MatDialog, public auth: AuthService, private router: Router, private afs: AngularFirestore, ) {
     this.playerOne.name = "Totor";
     this.playerTwo.name = "Martine";
+>>>>>>> dc531b6e397a087b34738949157c6f2eb78cb218
   }
 
 
@@ -53,13 +61,13 @@ export class MotusComponent implements OnInit {
       this.setRandomWord();
       this.initialiserGrid();
     });
-    
+
     this.authSubscription = this.auth.authState.subscribe((user) => {
       if (!user) {
         this.router.navigate(['login']);
       }
     });
-    
+
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -189,5 +197,5 @@ export class MotusComponent implements OnInit {
     this.loosePopup();
     // console.log(this.grid[2].join('').substr(2, 4).replace('....', '..GAME..').split(''));
   }
-  
+
 }
