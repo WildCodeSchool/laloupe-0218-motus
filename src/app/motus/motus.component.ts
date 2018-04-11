@@ -27,7 +27,11 @@ export class MotusComponent implements OnInit {
 
   grid: string[][] = [['']];
   randomWord = 'formuler';
-  constructor(private dialog: MatDialog, public auth: AuthService, private router: Router, private afs: AngularFirestore) {
+  constructor(
+    private dialog: MatDialog,
+    public auth: AuthService,
+    private router: Router,
+    private afs: AngularFirestore) {
   }
 
 
