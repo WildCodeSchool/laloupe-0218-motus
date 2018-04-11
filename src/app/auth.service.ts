@@ -36,11 +36,13 @@ export class AuthService {
       //           return Observable.of(null);
       //         }
       //       });
+   
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.user = user;
       } else {
         this.user = null;
+        this.router.navigate(['login']);
       }
     });
   }
