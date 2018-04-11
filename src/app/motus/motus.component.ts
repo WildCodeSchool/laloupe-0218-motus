@@ -7,6 +7,7 @@ import { WinDialogComponent } from '../components/win/win-dialog.component';
 import { LooseDialogComponent } from '../components/loose/loose-dialog.component';
 import { AuthService } from '../auth.service';
 
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-motus',
@@ -16,7 +17,9 @@ import { AuthService } from '../auth.service';
 })
 export class MotusComponent implements OnInit {
   authSubscription: any;
+  words = '';
   word = '';
+  wordbank;
   wordwin = '';
   goodLetter = [];
   badLetter = [];
@@ -26,7 +29,7 @@ export class MotusComponent implements OnInit {
   // ];
   grid: string[][] = [['']];
   randomWord = 'formuler';
-  constructor(private dialog: MatDialog, public auth: AuthService, private router: Router) {
+  constructor(private dialog: MatDialog, public auth: AuthService, private router: Router, private afs: AngularFirestore, ) {
   }
 
 
@@ -43,6 +46,10 @@ export class MotusComponent implements OnInit {
       if (!user) {
         this.router.navigate(['login']);
       }
+    });
+    this.afs.doc('wordbank/UR5mwNbejke3tekQMtHU').valueChanges().subscribe((wordbank) => {
+      this.wordbank = wordbank;
+      this.setRandomWord();
     });
   }
 
@@ -119,6 +126,11 @@ export class MotusComponent implements OnInit {
         this.grid[line + 1][i] = '.';
       }
     }
+  }
+
+  setRandomWord() {
+    this.randomWord = this.wordbank.words[Math.floor(Math.random() * this.wordbank.words.length)];
+    console.log(this.randomWord);
   }
 
   openDialog(): void {
