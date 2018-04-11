@@ -1,28 +1,40 @@
 <app-navbar></app-navbar>
-
 <!-- rules.component.html -->
 
-    <div *ngIf="auth.user | async as user">
-        
-        <h3>Howdy, {{ user.displayName }}</h3>
-        <img src="user.photoURL" alt="travisthebest">
-        <p>UID: {{ user.uid }}</p>
-        <p>Favorite Color: {{ user?.favoriteColor }} </p>
-        <button (click)="auth.signOut()">Logout</button>
+<div *ngIf="auth.user | async as user">
+
+    <h3>Howdy, {{ user.displayName }}</h3>
+    <img [src]="user.photoURL" alt="travisthebest">
+    <p>UID: {{ user.uid }}</p>
+    <p>Favorite Color: {{ user?.favoriteColor }} </p>
+    <button (click)="auth.signOut()">Logout</button>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2">
+                    <app-playercontainer [player]="playerOne" [playerNumber]="1"></app-playercontainer>
+                </div>
+                <div class="col-md-8">
+                    <div class="example-container mat-elevation-z8">
+                        <form class="example-form">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="saisir votre mot" name="word" [(ngModel)]="word" #ctrl="ngModel" class="form-control" required
+                                    minlength="8" maxlength="8" appForbiddenName="bob">
+                            </mat-form-field>
+                            <button mat-button (click)="playGame()" [disabled]="word.length != 8">Send</button>
+                        </form>
+                        <mat-grid-list *ngFor="let word of grid" cols="8" rowHeight="2:1" id="row1">
+                            <mat-grid-tile *ngFor="let letter of word">{{letter}}</mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <app-playercontainer [player]="playerTwo" [playerNumber]="2"></app-playercontainer>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="example-container mat-elevation-z8">
-        <form class="example-form">
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="saisir votre mot" name="word" [(ngModel)]="word" #ctrl="ngModel" class="form-control" required
-                    minlength="8" maxlength="8" appForbiddenName="bob">
-            </mat-form-field>
-            <button mat-button (click)="playGame()" [disabled]="word.length != 8">Send</button>
-        </form>
-
-        <mat-grid-list *ngFor="let word of grid" cols="8" rowHeight="2:1" id="row1">
-            <mat-grid-tile *ngFor="let letter of word">{{letter}}</mat-grid-tile>
-        </mat-grid-list>
-    </div>
-
-
+</div>
