@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatInputModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import * as firebase from 'firebase/app';
@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Player } from '../models/player';
+import { Room } from '../models/room';
 import { Cell } from '../models/cell';
 import { Line } from '../models/line';
 import { State } from '../models/state';
@@ -21,6 +22,7 @@ import { State } from '../models/state';
   encapsulation: ViewEncapsulation.None,
 })
 export class MotusComponent implements OnInit {
+  
   authSubscription: any;
   words = '';
   word = '';
@@ -29,16 +31,16 @@ export class MotusComponent implements OnInit {
   goodLetters = [];
   badLetters = [];
   myTry = 0;
-
   grid: Line[];
   guessWord = 'formuler';
-
+  roomId;
   playerOne = new Player();
   playerTwo = new Player();
   constructor(
     private dialog: MatDialog,
     public auth: AuthService,
     private afs: AngularFirestore,
+    public route:ActivatedRoute,
     private router: Router) {
 
     this.playerOne.name = 'Totor';
@@ -57,6 +59,13 @@ export class MotusComponent implements OnInit {
       this.setRandomWord();
       this.initGrid();
     });
+    this.afs.collection('rooms').valueChanges().subscribe((roomId) => {
+      this.roomId = roomId;
+      console.log(this.roomId);
+      
+
+    });
+    this.roomId = this.route.snapshot.paramMap.get('id');
 
     this.authSubscription = this.auth.authState.subscribe((user) => {
       if (!user) {

@@ -23,19 +23,19 @@ export class AuthService {
               private afs: AngularFirestore,
               private router: Router) {
 
-        //// Get auth data, then get firestore user document || null
-      // this.afAuth.authState
-      //       // tslint:disable-next-line:ter-arrow-parens
-      //       .switchMap(user => {
-      //         if (user) {
-      //           this.user = user;
-      //           console.log('toto', user);
-      //           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-      //         // tslint:disable-next-line:no-else-after-return
-      //         } else {
-      //           return Observable.of(null);
-      //         }
-      //       });
+    //     // Get auth data, then get firestore user document || null
+    // this.afAuth.authState
+    //         // tslint:disable-next-line:ter-arrow-parens
+    //         .switchMap(user => {
+    //           if (user) {
+    //             this.user = user;
+    //             console.log('toto', user);
+    //             return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+    //           // tslint:disable-next-line:no-else-after-return
+    //           } else {
+    //             return Observable.of(null);
+    //           }
+    //         });
 
     this.afAuth.authState.subscribe((user) => {
       if (user) {
