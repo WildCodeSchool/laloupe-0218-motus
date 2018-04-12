@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatInputModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import * as firebase from 'firebase/app';
@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Player } from '../models/player';
+import { Room } from '../models/room';
 import { Cell } from '../models/cell';
 import { Line } from '../models/line';
 import { State } from '../models/state';
@@ -28,6 +29,7 @@ export class MotusComponent implements OnInit {
   goodLetters = [];
   badLetters = [];
   myTry = 0;
+  roomId;
 
   grid: Line[];
   guessWord = 'formuler';
@@ -38,6 +40,7 @@ export class MotusComponent implements OnInit {
     private dialog: MatDialog,
     public auth: AuthService,
     private afs: AngularFirestore,
+    public route: ActivatedRoute,
     private router: Router) {
 
     this.playerOne.name = 'Totor';
@@ -57,6 +60,8 @@ export class MotusComponent implements OnInit {
       this.initGrid();
     });
 
+    this.roomId = this.route.snapshot.paramMap.get('id');
+    
     this.authSubscription = this.auth.authState.subscribe((user) => {
       if (!user) {
         this.router.navigate(['login']);
@@ -220,7 +225,7 @@ export class MotusComponent implements OnInit {
     let line = 1;
     // const looseWord = '..GAME..';
     while (col < 8) {
-      this.grid[0][col] = this.guessWord[col];
+      this.grid[0].cells[col].letter = this.guessWord[col];
       col = col + 1;
     }
     col = 0;

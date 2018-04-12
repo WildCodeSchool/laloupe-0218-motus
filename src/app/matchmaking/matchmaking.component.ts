@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./matchmaking.component.scss'],
 })
 export class MatchmakingComponent implements OnInit {
-
+  gridLength = 8;
   private authSubscription: Subscription;
 
   constructor(
@@ -58,6 +58,11 @@ export class MatchmakingComponent implements OnInit {
 
       const room = new Room();
       room.players = {};
+      room.grid = Array
+        .apply(null, Array(this.gridLength * this.gridLength))
+        .map(Number.prototype.valueOf, 1);
+      room.gridLenght = this.gridLength;
+
       room.players[this.authService.user.uid] = player;
       this.db.collection('rooms')
         .add(JSON.parse(JSON.stringify(room)))
