@@ -4,7 +4,7 @@ import { Player } from '../../models/player';
 @Component({
   selector: 'app-playercontainer',
   templateUrl: './playercontainer.component.html',
-  styleUrls: ['./playercontainer.component.scss']
+  styleUrls: ['./playercontainer.component.scss'],
 })
 export class PlayercontainerComponent implements OnInit {
 
