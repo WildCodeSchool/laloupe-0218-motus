@@ -1,5 +1,9 @@
 @import '../../styles';
 
+body {
+    overflow: hidden;
+}
+
 .container-fluid.row {
     width: 100%;
 }
