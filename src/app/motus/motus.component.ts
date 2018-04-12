@@ -61,7 +61,7 @@ export class MotusComponent implements OnInit {
     });
 
     this.roomId = this.route.snapshot.paramMap.get('id');
-    
+
     this.authSubscription = this.auth.authState.subscribe((user) => {
       if (!user) {
         this.router.navigate(['login']);
