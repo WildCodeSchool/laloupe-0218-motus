@@ -1,1 +1,21 @@
 @import '../../styles';
+
+.no-padding {
+    padding: 0;
+}
+
+.no-padding-right {
+    padding-right: 0;
+}
+
+mat-grid-tile.good {
+    background-color: red;
+}
+
+mat-grid-tile.bad {
+    background-color: gray;
+}
+
+mat-grid-tile.misplaced {
+    background-color: yellow;
+}

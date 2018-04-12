@@ -1,11 +1,21 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+<<<<<<< HEAD
 import { AngularFireAuth } from 'angularfire2/auth';
+=======
+import { Router } from '@angular/router';
+>>>>>>> dev
 import { MatInputModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import * as firebase from 'firebase/app';
 import { WinDialogComponent } from '../components/win/win-dialog.component';
 import { LooseDialogComponent } from '../components/loose/loose-dialog.component';
+import { AuthService } from '../auth.service';
 
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Player } from '../models/player';
+import { Cell } from '../models/cell';
+import { Line } from '../models/line';
+import { State } from '../models/state';
 
 @Component({
   selector: 'app-motus',
@@ -14,38 +24,72 @@ import { LooseDialogComponent } from '../components/loose/loose-dialog.component
   encapsulation: ViewEncapsulation.None,
 })
 export class MotusComponent implements OnInit {
+  authSubscription: any;
+  words = '';
   word = '';
+  wordbank;
   wordwin = '';
-  goodLetter = [];
-  badLetter = [];
+  goodLetters = [];
+  badLetters = [];
   myTry = 0;
-  // grid: string[][] = [
-  //   ['f', 'o', 'r', 'm', 'u', 'l', 'e', 'r']
-  // ];
-  grid: string[][] = [['']];
-  randomWord = 'formuler';
-  constructor(private dialog: MatDialog, public afAuth: AngularFireAuth) {
+
+  grid: Line[];
+  guessWord = 'formuler';
+
+  playerOne = new Player();
+  playerTwo = new Player();
+  constructor(
+    private dialog: MatDialog,
+    public auth: AuthService,
+    private afs: AngularFirestore,
+    private router: Router) {
+
+    this.playerOne.name = 'Totor';
+    this.playerTwo.name = 'Martine';
   }
+
   login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.auth.login();
   }
   logout() {
-    this.afAuth.auth.signOut();
+    this.auth.logout();
   }
   ngOnInit() {
-    this.initialiserGrid();
+    this.afs.doc('wordbank/UR5mwNbejke3tekQMtHU').valueChanges().subscribe((wordbank) => {
+      this.wordbank = wordbank;
+      this.setRandomWord();
+      this.initGrid();
+    });
+
+    this.authSubscription = this.auth.authState.subscribe((user) => {
+      if (!user) {
+        this.router.navigate(['login']);
+      }
+    });
+
   }
-  initialiserGrid() {
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
+  }
+
+  initGrid() {
+    this.grid = Array(8);
     let line = 0;
     let col = 0;
-    this.randomWord.split('');
     while (line < 8) {
-      this.grid.push([]);
+      const newLine = new Line();
+      newLine.cells = Array(8);
+      this.grid[line] = newLine;
       while (col < 8) {
+        this.grid[line].cells[col] = new Cell();
         if (col === 0 && line === 0) {
-          this.grid[line][col] = this.randomWord[0].toUpperCase();
+          // this.grid[line].cells[col].letter.letter = this.randomWord[0].toUpperCase();
+          this.grid[line].cells[col].letter = this.guessWord[0].toUpperCase();
         } else {
-          this.grid[line][col] = '.';
+          // this.grid[line].cells[col].letter.letter = '.';
+          this.grid[line].cells[col].letter = '.';
         }
         col = col + 1;
       }
@@ -53,17 +97,58 @@ export class MotusComponent implements OnInit {
       col = 0;
     }
   }
+
+  isLetterGood(line: number, col: number) {
+    if (this.grid[line].cells[col].letter === this.guessWord[col]) {
+      return true;
+    }
+    return false;
+  }
+
+  isLetterInWord(letter: string) {
+    let i = 0;
+    while (i < this.guessWord.length) {
+      if (this.guessWord[i] === letter) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+
+  isLetterGoodInWholeWord(line: number, letter: string) {
+    let col = 0;
+    while (col < 8) {
+      if (this.guessWord[col] === letter && !this.isLetterGood(line, col)) {
+        return false;
+      }
+      col += 1;
+    }
+    return true;
+  }
+
+  isLetterMisplaced(line: number, col: number) {
+    const letter = this.grid[line].cells[col].letter;
+    return this.isLetterInWord(letter) &&
+      !this.isLetterGood(line, col) &&
+      !this.isLetterGoodInWholeWord(line, letter);
+  }
+
   sendWord(line: number) {
     let col = 0;
     let column = 0;
+<<<<<<< HEAD
     let count = 0;
+=======
+    let badLetterCount = 0;
+>>>>>>> dev
 
     this.word = this.word.toUpperCase();
-    this.randomWord = this.randomWord.toUpperCase();
     this.word.split('');
-    this.randomWord.split('');
+    this.guessWord.split('');
 
     while (col < 8) {
+<<<<<<< HEAD
       this.grid[line][col] = this.word[col];
       if (this.grid[line][col] === this.randomWord[col]) {
         this.grid[line + 1][col] = this.randomWord[col];
@@ -75,45 +160,80 @@ export class MotusComponent implements OnInit {
             this.badLetter[col] = this.randomWord[column];
           }
           column = column + 1;
+=======
+      this.grid[line].cells[col].letter = this.word[col];
+      col += 1;
+    }
+    col = 0;
+    while (col < 8) {
+      if (this.isLetterGood(line, col)) {
+        this.grid[line + 1].cells[col].letter = this.guessWord[col];
+        this.goodLetters[col] = this.guessWord[col];
+      } else {
+        // console.log('avant boucle: ' + this.badLetter);
+        console.log('check col : ' + col);
+        if (this.isLetterMisplaced(line, col)) {
+          this.badLetters[col] = this.grid[line].cells[col].letter;
+>>>>>>> dev
         }
         // console.log('apres boucle: ' + this.badLetter);
         column = 0;
         if (col === 0) {
-          this.grid[line + 1][col] = this.randomWord[col];
+          this.grid[line + 1].cells[col].letter = this.guessWord[col];
         } else {
+<<<<<<< HEAD
           if (line !== 0 && this.goodLetter[col] === this.randomWord[col]) {
             this.grid[line + 1][col] = this.randomWord[col];
+=======
+          if (line !== 0 && this.goodLetters[col] === this.guessWord[col]) {
+            this.grid[line + 1].cells[col].letter = this.guessWord[col];
+>>>>>>> dev
           } else {
-            this.grid[line + 1][col] = '.';
+            this.grid[line + 1].cells[col].letter = '.';
           }
         }
       }
       col = col + 1;
     }
+<<<<<<< HEAD
     this.badLetter = [];
+=======
+    this.badLetters = [];
+>>>>>>> dev
     this.word = '';
-    for (let i = 0; i < this.randomWord.length; i = i + 1) {
-      if (this.grid[line + 1][i] === '.') {
-        count = count + 1;
+    for (let i = 0; i < this.guessWord.length; i = i + 1) {
+      if (this.grid[line + 1].cells[i].letter === '.') {
+        badLetterCount = badLetterCount + 1;
       }
     }
-    if (count === 0) {
-      this.openDialog();
-      for (let i = 0; i < this.randomWord.length; i = i + 1) {
-        this.grid[line + 1][i] = '.';
+    if (badLetterCount === 0) {
+      this.openWinDialog();
+      for (let i = 0; i < this.guessWord.length; i = i + 1) {
+        this.grid[line + 1].cells[i].letter = '.';
       }
     }
   }
 
-  openDialog(): void {
+  setRandomWord() {
+    this.guessWord = this.wordbank.words[Math.floor(Math.random() * this.wordbank.words.length)];
+    this.guessWord = this.guessWord.toUpperCase();
+    console.log(this.guessWord);
+  }
+
+  openWinDialog(): void {
     const dialogRef = this.dialog.open(WinDialogComponent, {
       width: '250px',
     });
   }
 
   loosePopup(): void {
+<<<<<<< HEAD
     const wordwin = this.randomWord;
     console.log(this.randomWord);
+=======
+    const wordwin = this.guessWord;
+    console.log(this.guessWord);
+>>>>>>> dev
     const dialogRef = this.dialog.open(LooseDialogComponent, {
       width: '250px',
     });
@@ -123,19 +243,20 @@ export class MotusComponent implements OnInit {
 
   playGame() {
     if (this.myTry < 7) {
+      console.log(this.myTry);
       this.sendWord(this.myTry);
     } else {
       // this.loosePopup();
       this.looseGame();
     }
-    this.myTry = this.myTry + 1;
+    this.myTry += 1;
   }
   looseGame() {
     let col = 0;
     let line = 1;
     // const looseWord = '..GAME..';
     while (col < 8) {
-      this.grid[0][col] = this.randomWord[col];
+      this.grid[0][col] = this.guessWord[col];
       col = col + 1;
     }
     col = 0;
@@ -143,7 +264,11 @@ export class MotusComponent implements OnInit {
     // looseWord.split('');
     while (line < 8) {
       while (col < 8) {
+<<<<<<< HEAD
         this.grid[line][col] = '.';
+=======
+        this.grid[line].cells[col].letter = '.';
+>>>>>>> dev
         col = col + 1;
       }
       line = line + 1;
@@ -152,4 +277,5 @@ export class MotusComponent implements OnInit {
     this.loosePopup();
     // console.log(this.grid[2].join('').substr(2, 4).replace('....', '..GAME..').split(''));
   }
+
 }

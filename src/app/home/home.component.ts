@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { RulesDialogComponent } from '../components/rules/rules-dialog/rules-dialog.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,9 +10,13 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
-
-  ngOnInit() {
+  authSubscription: any;
+  constructor(private dialog: MatDialog) {
   }
+  ngOnInit() {
 
+  }
+  onOpendDialog() {
+    this.dialog.open(RulesDialogComponent);
+  }
 }
