@@ -9,9 +9,7 @@
     <p>Favorite Color: {{ user?.favoriteColor }} </p>
     <button (click)="auth.signOut()">Logout</button>
 </div>
-<!-- 
-<pre>{{ grid | json }}</pre>
- -->
+<!--<pre>{{ grid | json }}</pre>-->
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -29,7 +27,12 @@
                             <button mat-button (click)="playGame()" [disabled]="word.length != 8">Send</button>
                         </form>
                         <mat-grid-list *ngFor="let line of grid; let lineIndex = index" cols="8" rowHeight="2:1" id="row1">
-                            <mat-grid-tile *ngFor="let cell of line.cells; let col = index" [ngClass]="{'good': isLetterGood(lineIndex, col), 'misplaced': isLetterMisplaced(lineIndex, col), 'bad': !isLetterGood(lineIndex, col) && !isLetterMisplaced(lineIndex, col)}">{{ cell.letter }}</mat-grid-tile>
+                            <mat-grid-tile *ngFor="let cell of line.cells;let col = index" 
+                                            [ngClass]="{'good': isLetterGood(lineIndex, col),
+                                                        'misplaced': isLetterMisplaced(lineIndex, col),
+                                                            'bad': !isLetterGood(lineIndex, col) && !isLetterMisplaced(lineIndex, col)}">
+                                                            {{ cell.letter }}
+                            </mat-grid-tile>
                         </mat-grid-list>
                     </div>
                 </div>

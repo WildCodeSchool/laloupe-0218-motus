@@ -8,7 +8,7 @@ describe('PlayercontainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations:[PlayercontainerComponent],
+      declarations: [PlayercontainerComponent],
     })
     .compileComponents();
   }));
