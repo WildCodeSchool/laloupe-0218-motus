@@ -1,9 +1,6 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-<<<<<<< HEAD
-import { AngularFireAuth } from 'angularfire2/auth';
-=======
+
 import { Router } from '@angular/router';
->>>>>>> dev
 import { MatInputModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import * as firebase from 'firebase/app';
@@ -137,30 +134,13 @@ export class MotusComponent implements OnInit {
   sendWord(line: number) {
     let col = 0;
     let column = 0;
-<<<<<<< HEAD
-    let count = 0;
-=======
     let badLetterCount = 0;
->>>>>>> dev
 
     this.word = this.word.toUpperCase();
     this.word.split('');
     this.guessWord.split('');
 
     while (col < 8) {
-<<<<<<< HEAD
-      this.grid[line][col] = this.word[col];
-      if (this.grid[line][col] === this.randomWord[col]) {
-        this.grid[line + 1][col] = this.randomWord[col];
-        this.goodLetter[col] = this.randomWord[col];
-      } else {
-        // console.log('avant boucle: ' + this.badLetter);
-        while (column < 8) {
-          if (this.grid[line][col] === this.randomWord[column]) {
-            this.badLetter[col] = this.randomWord[column];
-          }
-          column = column + 1;
-=======
       this.grid[line].cells[col].letter = this.word[col];
       col += 1;
     }
@@ -174,20 +154,14 @@ export class MotusComponent implements OnInit {
         console.log('check col : ' + col);
         if (this.isLetterMisplaced(line, col)) {
           this.badLetters[col] = this.grid[line].cells[col].letter;
->>>>>>> dev
         }
         // console.log('apres boucle: ' + this.badLetter);
         column = 0;
         if (col === 0) {
           this.grid[line + 1].cells[col].letter = this.guessWord[col];
         } else {
-<<<<<<< HEAD
-          if (line !== 0 && this.goodLetter[col] === this.randomWord[col]) {
-            this.grid[line + 1][col] = this.randomWord[col];
-=======
           if (line !== 0 && this.goodLetters[col] === this.guessWord[col]) {
             this.grid[line + 1].cells[col].letter = this.guessWord[col];
->>>>>>> dev
           } else {
             this.grid[line + 1].cells[col].letter = '.';
           }
@@ -195,11 +169,7 @@ export class MotusComponent implements OnInit {
       }
       col = col + 1;
     }
-<<<<<<< HEAD
-    this.badLetter = [];
-=======
     this.badLetters = [];
->>>>>>> dev
     this.word = '';
     for (let i = 0; i < this.guessWord.length; i = i + 1) {
       if (this.grid[line + 1].cells[i].letter === '.') {
@@ -227,13 +197,8 @@ export class MotusComponent implements OnInit {
   }
 
   loosePopup(): void {
-<<<<<<< HEAD
-    const wordwin = this.randomWord;
-    console.log(this.randomWord);
-=======
     const wordwin = this.guessWord;
     console.log(this.guessWord);
->>>>>>> dev
     const dialogRef = this.dialog.open(LooseDialogComponent, {
       width: '250px',
     });
@@ -264,11 +229,7 @@ export class MotusComponent implements OnInit {
     // looseWord.split('');
     while (line < 8) {
       while (col < 8) {
-<<<<<<< HEAD
-        this.grid[line][col] = '.';
-=======
         this.grid[line].cells[col].letter = '.';
->>>>>>> dev
         col = col + 1;
       }
       line = line + 1;
