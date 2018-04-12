@@ -13,6 +13,7 @@ export class LooseDialogComponent implements OnInit {
   ngOnInit() {
   }
   onNoClick(): void {
+    document.location.reload(true);
     this.dialogRef.close();
   }
 
