@@ -51,7 +51,7 @@ export class MatchmakingComponent implements OnInit {
         if (Object.keys(room.players).length === 1) {
           room.players[this.authService.user.uid] = player;
           this.db.doc('rooms/' + roomId).update(JSON.parse(JSON.stringify(room)));
-          this.router.navigate(['motus', roomId]);
+          this.router.navigate(['motus' + roomId]);
           return;
         }
       }

@@ -26,25 +26,14 @@ export class MotusComponent implements OnInit {
   badLetter = [];
   myTry = 0;
 
+  // grid: { letter: string, color: string }[][] = [];
   grid: string[][] = [['']];
   randomWord = 'formuler';
-<<<<<<< HEAD
   constructor(
     private dialog: MatDialog,
     public auth: AuthService,
     private router: Router,
     private afs: AngularFirestore) {
-=======
-
-  playerOne = new Player();
-  playerTwo = new Player();
-
-
-
-  constructor(private dialog: MatDialog, public auth: AuthService, private router: Router, private afs: AngularFirestore, ) {
-    this.playerOne.name = "Totor";
-    this.playerTwo.name = "Martine";
->>>>>>> dc531b6e397a087b34738949157c6f2eb78cb218
   }
 
 
@@ -83,8 +72,10 @@ export class MotusComponent implements OnInit {
       this.grid.push([]);
       while (col < 8) {
         if (col === 0 && line === 0) {
+          // this.grid[line][col].letter = this.randomWord[0].toUpperCase();
           this.grid[line][col] = this.randomWord[0].toUpperCase();
         } else {
+          // this.grid[line][col].letter = '.';
           this.grid[line][col] = '.';
         }
         col = col + 1;

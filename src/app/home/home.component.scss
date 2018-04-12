@@ -17,3 +17,26 @@ iframe {
     border: white 10px solid;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
+#ical {
+    animation: bounce 0.35s ease alternate;
+
+    animation-duration: 2s;
+    animation-iteration-count: 3;
+
+
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20px);
+    }
+}
+
+
+
+
+
