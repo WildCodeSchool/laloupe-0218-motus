@@ -8,6 +8,10 @@ body {
     width: 100%;
 }
 
+.game {
+    background: white;
+}
+
 .col-md-8 {
     padding: 0;
 }
@@ -30,4 +34,8 @@ mat-grid-tile.bad {
 
 mat-grid-tile.misplaced {
     background-color: yellow;
+}
+
+mat-card {
+    margin: 0 !important;
 }

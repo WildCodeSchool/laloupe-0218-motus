@@ -52,8 +52,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
-
-
+import { GameService } from './game.service';
 // importations de  firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -118,7 +117,7 @@ import { PlayercontainerComponent } from './components/playercontainer/playercon
 
 
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, GameService],
   bootstrap: [AppComponent],
   entryComponents: [RulesDialogComponent, WinDialogComponent, LooseDialogComponent],
 })

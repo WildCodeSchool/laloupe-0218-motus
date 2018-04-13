@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 // tslint:disable-next-line:import-blacklist
 import { Subscription } from 'rxjs/Rx';
 import { Router } from '@angular/router';
+import { Line } from './../models/line';
+import { Cell } from './../models/cell';
 
 @Component({
   selector: 'app-matchmaking',
@@ -20,7 +22,8 @@ export class MatchmakingComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private db: AngularFirestore,
-    private router: Router) { }
+    private router: Router,
+    private afs: AngularFirestore) { }
 
   ngOnInit() {
     this.authSubscription = this.authService.authState.take(1).subscribe((user) => {
@@ -42,6 +45,8 @@ export class MatchmakingComponent implements OnInit {
     const snapshot = roomsCollection.snapshotChanges().take(1).subscribe((snapshot) => {
       const player = new Player();
       player.name = this.authService.user.displayName;
+      player.image = this.authService.user.photoURL;
+      player.score = 0;
 
       for (const snapshotItem of snapshot) {
         const roomId = snapshotItem.payload.doc.id;
@@ -51,24 +56,61 @@ export class MatchmakingComponent implements OnInit {
         if (Object.keys(room.players).length === 1) {
           room.players[this.authService.user.uid] = player;
           this.db.doc('rooms/' + roomId).update(JSON.parse(JSON.stringify(room)));
-          this.router.navigate(['motus' + roomId]);
+          this.router.navigate(['motus', roomId]);
           return;
         }
       }
 
       const room = new Room();
       room.players = {};
+      room.turn = this.authService.user.uid;
       room.grid = Array
         .apply(null, Array(this.gridLength * this.gridLength))
         .map(Number.prototype.valueOf, 1);
       room.gridLenght = this.gridLength;
 
       room.players[this.authService.user.uid] = player;
-      this.db.collection('rooms')
-        .add(JSON.parse(JSON.stringify(room)))
-        .then((doc) => {
-          this.router.navigate(['motus', doc.id]);
-        });
+
+      this.afs.doc('wordbank/UR5mwNbejke3tekQMtHU').valueChanges().take(1).subscribe((wordbank) => {
+        this.setRandomWord(room, wordbank);
+      });
     });
+  }
+
+  setRandomWord(room, wordbank) {
+    room.guessWord = wordbank.words[Math.floor(Math.random() * wordbank.words.length)];
+    room.guessWord = room.guessWord.toUpperCase();
+    console.log(room.guessWord);
+    this.initGrid(room);
+  }
+
+
+  initGrid(room: Room) {
+    room.grid = Array(8);
+    let line = 0;
+    let col = 0;
+    while (line < 8) {
+      const newLine = new Line();
+      newLine.cells = Array(8);
+      room.grid[line] = newLine;
+      while (col < 8) {
+        room.grid[line].cells[col] = new Cell();
+        if (col === 0 && line === 0) {
+          // this.grid[line].cells[col].letter.letter = this.randomWord[0].toUpperCase();
+          room.grid[line].cells[col].letter = room.guessWord[0].toUpperCase();
+        } else {
+          // this.grid[line].cells[col].letter.letter = '.';
+          room.grid[line].cells[col].letter = '.';
+        }
+        col = col + 1;
+      }
+      line = line + 1;
+      col = 0;
+    }
+    this.db.collection('rooms')
+      .add(JSON.parse(JSON.stringify(room)))
+      .then((doc) => {
+        this.router.navigate(['motus', doc.id]);
+      });
   }
 }

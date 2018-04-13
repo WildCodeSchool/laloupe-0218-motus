@@ -14,6 +14,12 @@ export class PlayercontainerComponent implements OnInit {
   @Input()
   playerNumber: number;
 
+  @Input()
+  myTurn: boolean;
+
+  @Input()
+  isMe: boolean;
+
   constructor() { }
 
   ngOnInit() {
