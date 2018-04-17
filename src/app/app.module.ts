@@ -67,6 +67,7 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { PlayercontainerComponent } from './components/playercontainer/playercontainer.component';
+import { CreditsComponent } from './components/credits/credits.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { PlayercontainerComponent } from './components/playercontainer/playercon
     NavbarComponent,
     MatchmakingComponent,
     PlayercontainerComponent,
+    CreditsComponent,
 
 
   ],
