@@ -1,9 +1,19 @@
 @import '../../styles';
-body {
-    background-color: #EEEEEE;
+html,
+body,
+.container {
+    background-color: #2196f3;
 }
- 
-// mat-card {
-//     padding: 0 !important;
-// }
 
+.mat-card {
+    padding: 0 !important;
+    margin-top: 100px;
+}
+
+h1 {
+    color: white;
+}
+
+.mat-raised-button {
+    margin-bottom: 15px !important;
+}

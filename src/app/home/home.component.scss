@@ -1,1 +1,118 @@
-@import '../../styles';
+/* @import '../../styles';
+
+
+ */
+
+ @import url('https://fonts.googleapis.com/css?family=Montserrat:700');
+
+.container-home {
+  background-color: #2196f3;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+img {
+    height: auto;
+    width: 600px;
+}
+
+iframe {
+    width: 650px;
+    height: 350px;
+    border: white 10px solid;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#ical {
+  animation: bounce 0.35s ease alternate;
+  animation-duration: 2s;
+  animation-iteration-count: 3;
+}
+
+@keyframes bounce {
+  from {
+      transform: translateY(0);
+  }
+  to {
+      transform: translateY(-20px);
+  }
+}
+
+.hero-title {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  z-index: 1;
+  text-align: center;
+}
+
+.mat-button {
+  padding: 16px !important;
+}
+/* BG ANIM */
+
+.cube {
+  position: absolute;
+  top: 80vh;
+  left: 45vw;
+  width: 10px;
+  height: 10px;
+  border: solid 1px darken(#2196f3, 8%);
+  transform-origin: top left;
+  transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  animation: cube 12s ease-in forwards infinite;
+  
+  &:nth-child(2n) {
+    border-color: lighten(#2196f3, 10%);
+  }
+  
+  &:nth-child(2) {
+    animation-delay: 2s;
+    left: 25vw;
+    top: 40vh;
+    border-radius: 50%;
+  }
+  
+  &:nth-child(3) {
+    animation-delay: 4s;
+    left: 75vw;
+    top: 50vh;
+  }
+  
+  &:nth-child(4) {
+    animation-delay: 6s;
+    left: 90vw;
+    top: 10vh;
+    border-radius: 50%;
+  }
+  
+  &:nth-child(5) {
+    animation-delay: 8s;
+    left: 10vw;
+    top: 85vh;
+    border-radius: 50%;
+  }
+  
+  &:nth-child(6) {
+    animation-delay: 10s;
+    left: 50vw;
+    top: 10vh;
+  }
+}
+
+@keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);   
+    opacity: 1;
+  }
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%); 
+    opacity: 0;
+  }
+}
+/* END BG ANIM */

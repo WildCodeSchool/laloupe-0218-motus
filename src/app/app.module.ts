@@ -14,11 +14,12 @@ import 'hammerjs';
 // importation de composant
 import { AppComponent } from './app.component';
 import { RulesDialogComponent } from './components/rules/rules-dialog/rules-dialog.component';
-
+import { WinDialogComponent } from './components/win/win-dialog.component';
+import { LooseDialogComponent } from './components/loose/loose-dialog.component';
 // importation de pages
 
 import { ContactComponent } from './contact/contact.component';
-import { TestComponent } from './components/test/test.component';
+
 import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
 import { LoginComponent } from './login/login.component';
@@ -51,8 +52,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
-
-
+import { GameService } from './game.service';
 // importations de  firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -63,8 +63,11 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 // necessaire pour les promise et observable
 import { Observable } from 'rxjs/Observable';
-import { HeaderComponent } from './header/header.component';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatchmakingComponent } from './matchmaking/matchmaking.component';
+import { PlayercontainerComponent } from './components/playercontainer/playercontainer.component';
+import { CreditsComponent } from './components/credits/credits.component';
 
 @NgModule({
   declarations: [
@@ -75,8 +78,12 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
     RulesDialogComponent,
     LoginComponent,
     MotusComponent,
-    TestComponent,
-    HeaderComponent,
+    WinDialogComponent,
+    LooseDialogComponent,
+    NavbarComponent,
+    MatchmakingComponent,
+    PlayercontainerComponent,
+    CreditsComponent,
 
 
   ],
@@ -112,8 +119,8 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
 
 
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, GameService],
   bootstrap: [AppComponent],
-  entryComponents: [RulesDialogComponent],
+  entryComponents: [RulesDialogComponent, WinDialogComponent, LooseDialogComponent],
 })
 export class AppModule { }

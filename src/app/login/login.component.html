@@ -1,8 +1,8 @@
 <!-- login.page.html -->
 <div class="container">
     <div class="row">
-        <div class="col-7 mx-auto">
-            <mat-card class="text-center">
+        <div class="col-6 mx-auto" layout="column" layout-align="center center">
+            <mat-card class="text-center login-card">
                 <mat-toolbar color="primary" class="justify-content-center">
                     <mat-card-title>
                         <h1>
@@ -17,13 +17,13 @@
                     </p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <div *ngIf="afAuth.authState | async as user; else showLogin">
+                    <div *ngIf="auth.authState | async as user; else showLogin">
                         <button mat-raised-button (click)="logout()">Sign out</button>
                     </div>
                     <ng-template #showLogin>
                         <button mat-raised-button (click)="login()">
                             <span>
-                                <fa [name]="'google'"></fa> SIGN IN</span>
+                                <fa [name]="'google'"></fa> SIGN IN WITH GOOGLE</span>
                         </button>
                     </ng-template>
                 </mat-card-actions>

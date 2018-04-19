@@ -1,15 +1,45 @@
-<!-- motus.component.html -->
+<app-navbar></app-navbar>
+<!-- rules.component.html -->
 
-<div class="example-container mat-elevation-z8">
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="saisir votre mot" name="word" [(ngModel)]="word" #ctrl="ngModel" class="form-control" required
-                minlength="8" maxlength="8" appForbiddenName="bob">
-        </mat-form-field>
-        <button mat-button (click)="sendWord()" [disabled]="word.length != 8">Send</button>
-    </form>
+<div *ngIf="auth.user | async as user">
 
-    <mat-grid-list *ngFor="let word of grid" cols="8" rowHeight="2:1" id="row1">
-        <mat-grid-tile *ngFor="let letter of word">{{letter}}</mat-grid-tile>
-    </mat-grid-list>
+    <h3>Howdy, {{ user.displayName }}</h3>
+    <img [src]="user.photoURL" alt="travisthebest">
+    <p>UID: {{ user.uid }}</p>
+    <p>Favorite Color: {{ user?.favoriteColor }} </p>
+    <button (click)="auth.signOut()">Logout</button>
+</div>
+<!--<pre>{{ grid | json }}</pre>-->
+<div class="container-fluid game">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2">
+                    <app-playercontainer [player]="player1" [playerNumber]="1" [myTurn]="isPlayerTurn(0)" [isMe]="isMe(player1)"></app-playercontainer>
+                </div>
+                <div class="col-md-8" *ngIf="room && room.grid && room.grid[7] && room.grid[7].cells && room.grid[7].cells[7]">
+                    <div class="example-container mat-elevation-z8">
+                        <form class="example-form">
+                            <mat-form-field class="example-full-width">
+                                <input [disabled]="!isMyTurn()" matInput placeholder="saisir votre mot" name="word" [(ngModel)]="word" #ctrl="ngModel" class="form-control" required
+                                    minlength="8" maxlength="8" appForbiddenName="bob">
+                            </mat-form-field>
+                            <button mat-button (click)="playGame()" [disabled]="word.length != 8">Send</button>
+                        </form>
+                        <mat-grid-list *ngFor="let line of room.grid; let lineIndex = index" cols="8" rowHeight="2:1" id="row1">
+                            <mat-grid-tile *ngFor="let cell of line.cells;let col = index" 
+                                            [ngClass]="{'good': isLetterGood(lineIndex, col),
+                                                        'misplaced': isLetterMisplaced(lineIndex, col),
+                                                            'bad': !isLetterGood(lineIndex, col) && !isLetterMisplaced(lineIndex, col)}">
+                                                            {{ cell.letter }}
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <app-playercontainer [player]="player2" [playerNumber]="2" [myTurn]="isPlayerTurn(1)" [isMe]="isMe(player2)"></app-playercontainer>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

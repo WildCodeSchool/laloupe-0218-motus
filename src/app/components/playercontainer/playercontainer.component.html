@@ -1,0 +1,28 @@
+<mat-card *ngIf="player">
+    <mat-card-title-group>
+        <div class="container white">
+            <div class="row mx-auto">
+                <div class="col-12">
+                    <mat-card-subtitle class="text-center playernumber">Player {{playerNumber}}</mat-card-subtitle>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mx-auto">
+                    <img mat-card-md-image class="playeravatar" [src]="player.image" alt="player.imageUrl">
+                </div>
+            </div>
+            <div class="row mx-auto">
+                <div class="col-12">
+                    <mat-card-title class="text-center username">{{player.name}}</mat-card-title>
+                    <mat-card-title class="text-center username">Score : {{player.score}}</mat-card-title>
+                    <mat-card-title class="text-center username" *ngIf="myTurn && isMe">
+                        A mon tour
+                    </mat-card-title>
+                    <mat-card-title class="text-center username" *ngIf="myTurn && !isMe">
+                        A son tour
+                    </mat-card-title>
+                </div>
+            </div>
+        </div>
+    </mat-card-title-group>
+</mat-card>

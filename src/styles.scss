@@ -12,10 +12,8 @@ $dark-accent: mat-palette($mat-amber, A200, A100, A400);
 $dark-warn: mat-palette($mat-deep-orange);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 body,
-html,
-.mat-sidenav-container {
+html {
   height: 100vh;
-  background: #e6e9e6;
 
 }
 
